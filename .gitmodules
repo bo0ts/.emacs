@@ -1,0 +1,12 @@
+[submodule "codepad"]
+	path = codepad
+	url = https://github.com/ruediger/emacs-codepad.git
+[submodule "mediawiki"]
+	path = mediawiki
+	url = https://github.com/tangyi/mediawiki-el.git
+[submodule "zenburn"]
+	path = zenburn
+	url = https://github.com/bbatsov/zenburn-emacs.git
+[submodule "keyfreq"]
+	path = keyfreq
+	url = https://github.com/jasonblewis/keyfreq.el.git
