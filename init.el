@@ -35,6 +35,10 @@
 
 (add-to-list 'load-path "/home/boots/.emacs.d")
 
+(let ((default-directory  "~/.emacs.d/"))
+  (normal-top-level-add-to-load-path 
+   '("codepad" "keyfreq" "mediawiki" "zenburn")))
+
 (server-start)
 
 (require 'grep-edit)
