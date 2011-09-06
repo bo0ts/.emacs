@@ -182,6 +182,7 @@
 
 (setq org-publish-project-alist
       '(
+        ("web" :components ("blog" "static"))
         ("ba"
          :base-directory "~/everything/ba/"
          :base-extension "org"
@@ -189,10 +190,18 @@
          :publishing-function org-publish-org-to-html
          )
         ("blog"
-         :base-directory "~/everything/blog/"
+         :base-directory "~/everything/web/"
          :base-extension "org"
-         :publishing-directory "~/public_html/blog/"
+         :publishing-directory "~/public_html/"
+         :html-postamble nil
          :publishing-function org-publish-org-to-html
+         )
+        ("static"
+         :base-directory "~/everything/web/"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "~/public_html/"
+         :recursive t
+         :publishing-function org-publish-attachment
          )
         ))
 
