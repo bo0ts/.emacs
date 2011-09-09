@@ -179,26 +179,43 @@
 (require 'org-install)
 (require 'org-protocol)
 (require 'org-publish)
+(require 'org-exp-bibtex)
 
 (setq org-publish-project-alist
       '(
-        ("web" :components ("blog" "static"))
-        ("ba"
+        ("ba" :components ("ba-html" "ba-pdf" "ba-static"))
+        ("ba-pdf"
+         :base-directory "~/everything/ba/"
+         :base-extension "org"
+         :publishing-directory "~/public_html/ba/"
+         :publishing-function org-publish-org-to-pdf
+         )
+        ("ba-html"
          :base-directory "~/everything/ba/"
          :base-extension "org"
          :publishing-directory "~/public_html/ba/"
          :publishing-function org-publish-org-to-html
          )
+        ("ba-static"
+         :base-directory "~/everything/ba/"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|html"
+         :publishing-directory "~/public_html/ba/"
+         :publishing-function org-publish-attachment
+         :recursive t
+         )
+        ("web" :components ("blog" "static"))
         ("blog"
          :base-directory "~/everything/web/"
          :base-extension "org"
          :publishing-directory "~/public_html/"
-         :html-postamble nil
+         :html-preamble nil
+         :html-postamble "<h2>Philipp's braindump</h2>Entirely experimental and subject to change"
          :publishing-function org-publish-org-to-html
          )
+        ;; static files like images  and static html as well
         ("static"
          :base-directory "~/everything/web/"
-         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|html"
          :publishing-directory "~/public_html/"
          :recursive t
          :publishing-function org-publish-attachment
