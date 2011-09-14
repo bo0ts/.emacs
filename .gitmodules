@@ -10,3 +10,6 @@
 [submodule "keyfreq"]
 	path = keyfreq
 	url = https://github.com/jasonblewis/keyfreq.el.git
+[submodule "emacs-color-theme-solarized"]
+	path = emacs-color-theme-solarized
+	url = https://github.com/sellout/emacs-color-theme-solarized.git

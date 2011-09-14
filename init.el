@@ -37,7 +37,9 @@
 
 (let ((default-directory  "~/.emacs.d/"))
   (normal-top-level-add-to-load-path 
-   '("codepad" "keyfreq" "mediawiki" "zenburn")))
+   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized")))
+
+(load-file "~/.emacs.d/zenburn/color-theme-zenburn.el")
 
 (server-start)
 
