@@ -17,7 +17,26 @@
  '(org-capture-templates (quote (("l" "Link" entry (file+headline "~/everything/org/notes.org" "Links") "* TODO %(get-page-title (current-kill 0))" :immediate-finish t) ("t" "Task" entry (file+headline "~/everything/org/notes.org" "Tasks") "* TODO %?
   %u
   %a" :prepend t))))
- '(org-export-latex-classes (quote (("article" "\\documentclass[12pt]{article}" ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}") ("\\paragraph{%s}" . "\\paragraph*{%s}") ("\\subparagraph{%s}" . "\\subparagraph*{%s}")) ("report" "\\documentclass[11pt]{report}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("book" "\\documentclass[11pt]{book}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("beamer" "\\documentclass{beamer}" org-beamer-sectioning))))
+ '(org-export-latex-classes (quote 
+                             (("article" "\\documentclass[12pt]{article}" 
+                               ("\\section{%s}" . "\\section*{%s}") 
+                               ("\\subsection{%s}" . "\\subsection*{%s}") 
+                               ("\\subsubsection{%s}" . "\\subsubsection*{%s}") 
+                               ("\\paragraph{%s}" . "\\paragraph*{%s}") 
+                               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+                              ("report" "\\documentclass[11pt]{report}" 
+                               ("\\part{%s}" . "\\part*{%s}") 
+                               ("\\chapter{%s}" . "\\chapter*{%s}") 
+                               ("\\section{%s}" . "\\section*{%s}") 
+                               ("\\subsection{%s}" . "\\subsection*{%s}") 
+                               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) 
+                              ("book" "\\documentclass[11pt]{book}" 
+                               ("\\part{%s}" . "\\part*{%s}") 
+                               ("\\chapter{%s}" . "\\chapter*{%s}") 
+                               ("\\section{%s}" . "\\section*{%s}") 
+                               ("\\subsection{%s}" . "\\subsection*{%s}") 
+                               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) 
+                              ("beamer" "\\documentclass{beamer}" org-beamer-sectioning))))
  '(org-modules (quote (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-habit org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m)))
  '(org-time-stamp-rounding-minutes (quote (0 15)))
  '(standard-indent 2)
@@ -233,6 +252,7 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (add-hook 'org-mode-hook 'flyspell-mode)
+(add-hook 'org-mode-hook 'auto-fill-mode)
 
 (setq org-directory "~/everything/org")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
