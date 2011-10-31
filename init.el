@@ -159,7 +159,7 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-ghci)
 
-
+;;
 ;; c++
 ;;
 
@@ -184,6 +184,13 @@
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
 
 (add-hook 'c++-mode-hook 'flyspell-prog-mode)
+(add-hook 'c-mode-common-hook
+          '(lambda ()
+             (local-set-key "{" 'skeleton-pair-insert-maybe)
+             (local-set-key "(" 'skeleton-pair-insert-maybe)
+             (local-set-key "<" 'skeleton-pair-insert-maybe)
+             (local-set-key "[" 'skeleton-pair-insert-maybe)
+             ))
 
 ;; 
 ;; yasnippets
