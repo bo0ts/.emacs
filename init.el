@@ -308,6 +308,17 @@
 (global-set-key (kbd "<f8>")   'fd-switch-dictionary)
 
 ;;
+;; skeletons and paren balancing
+;;
+
+(setq skeleton-pair t)
+
+(global-set-key "(" 'skeleton-pair-insert-maybe)
+(global-set-key "{" 'skeleton-pair-insert-maybe)
+(global-set-key "[" 'skeleton-pair-insert-maybe)
+(global-set-key "<" 'skeleton-pair-insert-maybe)
+
+;;
 ;; emacs disabled
 ;;
 
