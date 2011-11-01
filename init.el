@@ -72,6 +72,12 @@
   "Minor mode to count words." t nil)
 
 ;;
+;; ido
+;;
+
+(ido-mode 1)
+
+;;
 ;; erc
 ;;
 
