@@ -36,7 +36,7 @@
 ;; setup
 ;;
 
-(add-to-list 'load-path "/home/boots/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d")
 
 (let ((default-directory  "~/.emacs.d/"))
   (normal-top-level-add-to-load-path 
@@ -70,6 +70,11 @@
 
 (autoload 'word-count-mode "word-count"
   "Minor mode to count words." t nil)
+
+
+;; show-paren-mode is always on
+
+(show-paren-mode 1)
 
 ;;
 ;; ido
@@ -124,20 +129,20 @@
 ;; latex/auctex
 ;; 
 
-(setq TeX-auto-save nil)
-(setq TeX-parse-self t)
-(setq require-final-newline nil)
+;; (setq TeX-auto-save nil)
+;; (setq TeX-parse-self t)
+;; (setq require-final-newline nil)
 
-(load "auctex.el" nil t t)
-(load "preview-latex.el" nil t t)
+;; (load "auctex.el" nil t t)
+;; (load "preview-latex.el" nil t t)
 
-(add-hook 'TeX-mode-hook
-          (lambda ()
-            (set (make-local-variable 'compile-command)
-                 (concat "pdflatex -interaction nonstopmode -file-line-error "
-                         (buffer-name)))))
+;; (add-hook 'TeX-mode-hook
+;;           (lambda ()
+;;             (set (make-local-variable 'compile-command)
+;;                  (concat "pdflatex -interaction nonstopmode -file-line-error "
+;;                          (buffer-name)))))
 
-(add-hook 'TeX-mode-hook 'flyspell-mode)
+;; (add-hook 'TeX-mode-hook 'flyspell-mode)
 
 
 ;;
@@ -188,7 +193,7 @@
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/yas")
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
-(setq yas/root-directory "~/.emacs.d/snippets")
+(setq yas/root-directory "~/.emacs.d/snippets/")
 (yas/load-directory yas/root-directory)
 
 ;;
