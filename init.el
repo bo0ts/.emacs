@@ -83,6 +83,13 @@
 (ido-mode 1)
 
 ;;
+;; gnus
+;; 
+
+(setq gnus-init-file "~/.emacs.d/gnus/gnus.el")
+(setq gnus-save-newsrc-file nil)
+
+;;
 ;; erc
 ;;
 
