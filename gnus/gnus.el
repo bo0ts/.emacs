@@ -15,6 +15,11 @@
                                       ))
 
 
+(require 'w3m)
+(setq mm-inline-text-html-renderer 'mm-inline-text-html-render-with-w3m
+      w3m-display-inline-image t
+      gnus-article-wash-function 'gnus-article-wash-html-with-w3m)
+
 (require 'smtpmail)
 (setq message-send-mail-function 'smtpmail-send-it
       smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
