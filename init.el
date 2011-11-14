@@ -258,6 +258,9 @@
 (setq org-directory "~/everything/org")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+
 (setq org-agenda-custom-commands '(("h" "Daily habits" ((agenda ""))
                                     ((org-agenda-show-log t) (org-agenda-ndays 7)
                                      (org-agenda-log-mode-items '(state))
