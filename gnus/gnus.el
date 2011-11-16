@@ -3,6 +3,18 @@
 
 ;; (setq gnus-select-method '(nntp "news.gmane.org"))
 
+;; exiting gnus
+(defun exit-gnus-on-exit ()
+  (if (and (fboundp 'gnus-group-exit)
+           (gnus-alive-p))
+      (with-current-buffer (get-buffer "*Group*")
+        (let (gnus-interactive-exit)
+          (gnus-group-exit)))))
+
+(add-hook 'kill-emacs-hook 'exit-gnus-on-exit)
+
+
+;; mail servers
 (setq gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
 (setq gnus-secondary-select-methods '((nnimap "gmail"
                                               (nnimap-address "imap.gmail.com")
@@ -14,12 +26,6 @@
                                               (nnimap-stream ssl))
                                       ))
 
-
-(require 'w3m)
-(setq mm-inline-text-html-renderer 'mm-inline-text-html-render-with-w3m
-      w3m-display-inline-image t
-      gnus-article-wash-function 'gnus-article-wash-html-with-w3m)
-
 (require 'smtpmail)
 (setq message-send-mail-function 'smtpmail-send-it
       smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
@@ -27,6 +33,14 @@
       smtpmail-default-smtp-server "smtp.gmail.com"
       smtpmail-smtp-server "smtp.gmail.com"
       smtpmail-smtp-service 587)
+
+;; html mails
+(require 'w3m)
+(setq mm-inline-text-html-renderer 'mm-inline-text-html-render-with-w3m
+      w3m-display-inline-image t
+      gnus-article-wash-function 'gnus-article-wash-html-with-w3m)
+
+
 
 ;; (setq send-mail-function 'smtpmail-send-it
 ;;       message-send-mail-function 'smtpmail-send-it
