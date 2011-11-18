@@ -149,7 +149,7 @@
 ;;                  (concat "pdflatex -interaction nonstopmode -file-line-error "
 ;;                          (buffer-name)))))
 
-;; (add-hook 'TeX-mode-hook 'flyspell-mode)
+(add-hook 'tex-mode-hook 'flyspell-mode)
 
 
 ;;
