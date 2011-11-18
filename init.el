@@ -61,6 +61,7 @@
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key [f6] 'recompile)
+(global-set-key [f5] 'gnus)
 
 (require 'mediawiki)
 
