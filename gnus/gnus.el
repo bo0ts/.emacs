@@ -32,7 +32,10 @@
       smtpmail-auth-credentials '(("smtp.gmail.com" 587 "bootsarehax@gmail.com" nil))
       smtpmail-default-smtp-server "smtp.gmail.com"
       smtpmail-smtp-server "smtp.gmail.com"
-      smtpmail-smtp-service 587)
+      smtpmail-smtp-service 587
+      mail-from-style nil user-full-name "Philipp Moeller"
+      user-mail-address "bootsarehax@gmail.com"
+      user-host-address "bootsarehax@gmail.com")
 
 ;; html mails
 (require 'w3m)

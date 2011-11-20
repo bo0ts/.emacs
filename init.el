@@ -205,7 +205,7 @@
 (yas/load-directory yas/root-directory)
 
 ;;
-;;org-mode related
+;; org-mode
 ;;
 
 (require 'org-install)
@@ -305,6 +305,17 @@
   (concat "[[" url "][" web_title_str "]]")
   ))
 
+;;
+;; bbdb
+;;
+
+(require 'bbdb)
+(require 'bbdb-autoloads)
+(require 'bbdb-gnus)
+(bbdb-initialize 'gnus 'message)
+(bbdb-insinuate-message)
+(setq bbdb-file "~/everything/org/bbdb")
+(add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
 ;;
 ;; ispell dictionaries
 ;;
