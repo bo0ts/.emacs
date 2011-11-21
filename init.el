@@ -64,6 +64,7 @@
 (global-set-key [f5] 'gnus)
 
 (require 'mediawiki)
+(add-hook 'mediawiki-mode-hook 'flyspell-mode)
 
 (require 'keyfreq)
 (keyfreq-mode 1)
