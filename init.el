@@ -74,6 +74,9 @@
   "Minor mode to count words." t nil)
 
 
+;; bring qmake files into make-mode
+(add-to-list 'auto-mode-alist '("\\.pro$" . make-mode))
+
 ;; show-paren-mode is always on
 
 (show-paren-mode 1)
