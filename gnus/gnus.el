@@ -3,6 +3,8 @@
 
 ;; (setq gnus-select-method '(nntp "news.gmane.org"))
 
+(require 'nnir)
+
 ;; exiting gnus
 (defun exit-gnus-on-exit ()
   (if (and (fboundp 'gnus-group-exit)
@@ -19,11 +21,13 @@
 (setq gnus-secondary-select-methods '((nnimap "gmail"
                                               (nnimap-address "imap.gmail.com")
                                               (nnimap-server-port 993)
-                                              (nnimap-stream ssl))
+                                              (nnimap-stream ssl)
+                                              (nnir-search-engine imap))
                                       (nnimap "geometry"
                                               (nnimap-address "ssl0.ovh.net")
                                               (nnimap-server-port 993)
-                                              (nnimap-stream ssl))
+                                              (nnimap-stream ssl)
+                                              (nnir-search-engine imap))
                                       ))
 
 ;; html mails
