@@ -46,25 +46,30 @@
 
 (server-start)
 
-(require 'grep-edit)
-(require 'codepad)
+;;
+;; themes
+;;
+
 (require 'color-theme)
 (require 'color-theme-zenburn)
 (require 'color-theme-solarized)
 (color-theme-zenburn)
-
 (set-fringe-mode 0)
+
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-(global-set-key "\C-w" 'backward-kill-word)
-(global-set-key "\C-x\C-k" 'kill-region)
-(global-set-key "\C-c\C-k" 'kill-region)
-(global-set-key [f6] 'recompile)
-(global-set-key [f5] 'gnus)
+;; 
+;; various modes and keybindings, things that are too small for their
+;; own section
+;;
 
 (require 'mediawiki)
-(add-hook 'mediawiki-mode-hook 'flyspell-mode)
+(require 'grep-edit)
+(require 'codepad)
+(show-paren-mode 1)
+(flyspell-mode 1)
+(add-to-list 'auto-mode-alist '("\\.pro$" . make-mode))
 
 (require 'keyfreq)
 (keyfreq-mode 1)
@@ -73,19 +78,19 @@
 (autoload 'word-count-mode "word-count"
   "Minor mode to count words." t nil)
 
+(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
+(global-set-key [f6] 'recompile)
+(global-set-key [f5] 'gnus)
 
-;; bring qmake files into make-mode
-(add-to-list 'auto-mode-alist '("\\.pro$" . make-mode))
-
-;; show-paren-mode is always on
-
-(show-paren-mode 1)
 
 ;;
 ;; ido
 ;;
 
 (ido-mode 1)
+
 
 ;;
 ;; gnus
@@ -96,6 +101,65 @@
 (setq gnus-read-newsrc-file nil)
 (setq gnus-startup-file "~/everything/org/newsrc")
 (setq gnus-use-dribble-file nil)
+(setq gnus-posting-styles
+      '(("gmail" 
+         (name "Philipp Moeller")
+         (address "bootsarehax@gmail.com") 
+         ("X-SMTP-Server" "bootsarehax@gmail.com:smtp.gmail.com:587")
+         (signature "Philipp"))
+        ("geometry" 
+         (name "Philipp Moeller")
+         (address "philipp.moeller@geometryfactory.com") 
+         (organization "GeometryFactory")
+         ("X-SMTP-Server" "philipp.moeller@geometryfactory.com:ssl0.ovh.net:587")
+         (signature "Philipp Moeller, GeometryFactory"))
+        ))
+
+;;
+;; smtp mail configuration
+;;
+
+(eval-after-load "smtpmail"
+  '(progn
+     (defun smtpmail-get-and-delete-smtp-server-from-header ()
+       "Find header field X-SMTP-Server and if found return value as
+         string and delete header field. If a header field of this
+         name doesn't exist, return nil."
+       (save-excursion
+         (goto-char (point-min))
+         (save-match-data
+           (let ((smtp-server))
+             (loop until (or (eobp) (looking-at "^[ \t]*$"))
+                   if (looking-at "X-SMTP-Server[ \t]*:[ \t]*\\(.*?\\)[ \t]*\n")
+                   return (prog1 (match-string 1) (replace-match ""))
+                   else
+                   do (forward-line 1))))))
+     
+     (defadvice smtpmail-via-smtp (around set-smtp-server-from-header activate)
+       (let* ((server-pattern (split-string (or (smtpmail-get-and-delete-smtp-server-from-header)
+                          smtpmail-smtp-server) ":"))
+              (auth-cred (car server-pattern))
+              (server (car (cdr server-pattern)))
+              (port (car (cdr (cdr server-pattern))))
+              )
+         (setq smtpmail-starttls-credentials (list (list server port nil nil))
+               smtpmail-auth-credentials (list (list server port auth-cred nil))
+               smtpmail-smtp-server server
+               smtpmail-smtp-service port)
+         (message "server-patter %s" server-pattern)
+         ;; (message "This is %s ,  %s , %s" auth-cred server port)
+         ad-do-it
+         ))))
+
+(require 'smtpmail)
+(require 'starttls)
+
+
+
+;; (add-hook 'message-send-hook 'set-smtp-from-message)
+(setq smtpmail-debug-info t
+      smtpmail-debug-verb t)
+(setq message-send-mail-function 'smtpmail-send-it)
 
 ;;
 ;; erc
@@ -156,9 +220,6 @@
 ;;             (set (make-local-variable 'compile-command)
 ;;                  (concat "pdflatex -interaction nonstopmode -file-line-error "
 ;;                          (buffer-name)))))
-
-(add-hook 'tex-mode-hook 'flyspell-mode)
-
 
 ;;
 ;; haskell-related
@@ -267,7 +328,6 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
-(add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook 'auto-fill-mode)
 
 (setq org-directory "~/everything/org")
@@ -320,6 +380,7 @@
 (bbdb-insinuate-message)
 (setq bbdb-file "~/everything/org/bbdb")
 (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+
 ;;
 ;; ispell dictionaries
 ;;
