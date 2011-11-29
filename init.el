@@ -68,7 +68,6 @@
 (require 'grep-edit)
 (require 'codepad)
 (show-paren-mode 1)
-(flyspell-mode 1)
 (add-to-list 'auto-mode-alist '("\\.pro$" . make-mode))
 
 (require 'keyfreq)
@@ -96,11 +95,13 @@
 ;; gnus
 ;; 
 
-(setq gnus-init-file "~/.emacs.d/gnus/gnus.el")
-(setq gnus-save-newsrc-file nil)
-(setq gnus-read-newsrc-file nil)
-(setq gnus-startup-file "~/everything/org/newsrc")
-(setq gnus-use-dribble-file nil)
+(setq gnus-init-file "~/.emacs.d/gnus/gnus.el"
+      gnus-save-newsrc-file nil
+      gnus-read-newsrc-file nil
+      gnus-directory "~/everything/org/News/"
+      message-directory "~/everything/org/Mail/"
+      gnus-startup-file "~/everything/org/newsrc"
+      gnus-use-dribble-file nil)
 (setq gnus-posting-styles
       '(("gmail" 
          (name "Philipp Moeller")
@@ -114,6 +115,13 @@
          ("X-SMTP-Server" "philipp.moeller@geometryfactory.com:ssl0.ovh.net:587")
          (signature "Philipp Moeller, GeometryFactory"))
         ))
+
+;; (setq nnimap-split-inbox "INBOX"
+;;       nnimap-split-predicate "UNDELETED")
+;; (setq nnimap-split-rule '(("cgal-develop"   "Subject:.*[cgal-develop]")
+;;                           ("cgal-discuss"   "Subject:.*[cgal-discuss]")
+;;                           ))
+
 
 ;;
 ;; smtp mail configuration
@@ -253,7 +261,6 @@
 (add-to-list 'auto-mode-alist '("\\.glsl$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
 
-(add-hook 'c++-mode-hook 'flyspell-prog-mode)
 (add-hook 'c-mode-common-hook
           '(lambda ()
              (local-set-key "{" 'skeleton-pair-insert-maybe)
@@ -382,8 +389,16 @@
 (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
 
 ;;
-;; ispell dictionaries
+;; ispell dictionaries and flyspell
 ;;
+
+;; all text-modes
+(add-hook 'text-mode-hook (lambda ()  (flyspell-mode 1)))
+
+;; assorted prog modes
+(add-hook 'c++-mode-hook 'flyspell-prog-mode)
+(add-hook 'lisp-mode-hook 'flyspell-prog-mode)
+(add-hook 'c-mode-hook 'flyspell-prog-mode)
 
 (defun fd-switch-dictionary()
   (interactive)
