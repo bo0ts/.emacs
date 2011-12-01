@@ -40,7 +40,7 @@
 
 (let ((default-directory  "~/.emacs.d/"))
   (normal-top-level-add-to-load-path 
-   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized")))
+   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized" "autopair")))
 
 (load-file "~/.emacs.d/zenburn/color-theme-zenburn.el")
 
@@ -76,6 +76,10 @@
 
 (autoload 'word-count-mode "word-count"
   "Minor mode to count words." t nil)
+
+(require 'autopair)
+(autopair-global-mode 1)
+
 
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
@@ -261,14 +265,6 @@
 (add-to-list 'auto-mode-alist '("\\.glsl$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
 
-(add-hook 'c-mode-common-hook
-          '(lambda ()
-             (local-set-key "{" 'skeleton-pair-insert-maybe)
-             (local-set-key "(" 'skeleton-pair-insert-maybe)
-             (local-set-key "<" 'skeleton-pair-insert-maybe)
-             (local-set-key "[" 'skeleton-pair-insert-maybe)
-             ))
-
 ;; 
 ;; yasnippets
 ;;
@@ -410,16 +406,7 @@
 
 (global-set-key (kbd "<f8>")   'fd-switch-dictionary)
 
-;;
-;; skeletons and paren balancing
-;;
-
-(setq skeleton-pair t)
-
-(global-set-key "(" 'skeleton-pair-insert-maybe)
-(global-set-key "{" 'skeleton-pair-insert-maybe)
-(global-set-key "[" 'skeleton-pair-insert-maybe)
-(global-set-key "<" 'skeleton-pair-insert-maybe)
+(setq skeleton-pair nil)
 
 ;;
 ;; emacs disabled
