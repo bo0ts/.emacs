@@ -102,9 +102,9 @@
 (setq gnus-init-file "~/.emacs.d/gnus/gnus.el"
       gnus-save-newsrc-file nil
       gnus-read-newsrc-file nil
-      gnus-directory "~/everything/org/News/"
-      message-directory "~/everything/org/Mail/"
-      gnus-startup-file "~/everything/org/newsrc"
+      gnus-directory "~/News/"
+      message-directory "~/Mail/"
+      gnus-startup-file "~/newsrc"
       gnus-use-dribble-file nil)
 (setq gnus-posting-styles
       '(("gmail" 
