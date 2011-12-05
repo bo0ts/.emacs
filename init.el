@@ -120,11 +120,11 @@
          (signature "Philipp Moeller, GeometryFactory"))
         ))
 
-;; (setq nnimap-split-inbox "INBOX"
-;;       nnimap-split-predicate "UNDELETED")
-;; (setq nnimap-split-rule '(("cgal-develop"   "Subject:.*[cgal-develop]")
-;;                           ("cgal-discuss"   "Subject:.*[cgal-discuss]")
-;;                           ))
+(setq nnimap-split-inbox "INBOX"
+      nnimap-split-predicate "UNDELETED")
+(setq nnimap-split-rule '(("cgal-develop"   "^Subject:.*\\[cgal-develop\\]")
+                          ("cgal-discuss"   "^Subject:.*\\[cgal-discuss\\]")
+                          ))
 
 
 ;;
