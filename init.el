@@ -158,8 +158,6 @@
                smtpmail-auth-credentials (list (list server port auth-cred nil))
                smtpmail-smtp-server server
                smtpmail-smtp-service port)
-         (message "server-patter %s" server-pattern)
-         ;; (message "This is %s ,  %s , %s" auth-cred server port)
          ad-do-it
          ))))
 
@@ -168,7 +166,6 @@
 
 
 
-;; (add-hook 'message-send-hook 'set-smtp-from-message)
 (setq smtpmail-debug-info t
       smtpmail-debug-verb t)
 (setq message-send-mail-function 'smtpmail-send-it)
