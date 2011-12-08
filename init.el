@@ -126,7 +126,7 @@
       nnimap-split-predicate "UNDELETED")
 (setq nnimap-split-rule '(("cgal-develop"   "^Subject:.*\\[cgal-develop\\]")
                           ("cgal-discuss"   "^Subject:.*\\[cgal-discuss\\]")
-                          ("couchsurfing"   "^From.:.*CouchSurfing")
+                          ("couchsurfing"   "^From:.*CouchSurfing")
                           ))
 
 
