@@ -251,7 +251,7 @@
 (defun cplusplus-query (search-string)
   "Search for SEARCH-STRING on cplusplus.com"
   (interactive "sSearch for: ")
-  (browse-url (concat "http://www.cplusplus.com/search.do?q="
+  (browse-url (concat "http://en.cppreference.com/mwiki/index.php?title=Special%3ASearch&search="
                       (url-hexify-string
                        (encode-coding-string search-string 'utf-8)))))
 
