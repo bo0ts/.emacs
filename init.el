@@ -106,7 +106,8 @@
       message-directory "~/Mail/"
       gnus-startup-file "~/newsrc"
       gnus-use-dribble-file nil
-      gnus-fetch-old-headers t
+      ;; speed killer
+      gnus-fetch-old-headers nil
       gnus-agent nil)
 (setq gnus-posting-styles
       '(("gmail" 
