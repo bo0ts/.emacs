@@ -287,26 +287,6 @@
 
 (setq org-publish-project-alist
       '(
-        ("ba" :components ("ba-html" "ba-pdf" "ba-static"))
-        ("ba-pdf"
-         :base-directory "~/everything/ba/"
-         :base-extension "org"
-         :publishing-directory "~/public_html/ba/"
-         :publishing-function org-publish-org-to-pdf
-         )
-        ("ba-html"
-         :base-directory "~/everything/ba/"
-         :base-extension "org"
-         :publishing-directory "~/public_html/ba/"
-         :publishing-function org-publish-org-to-html
-         )
-        ("ba-static"
-         :base-directory "~/everything/ba/"
-         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|mp3\\|ogg\\|swf\\|html"
-         :publishing-directory "~/public_html/ba/"
-         :publishing-function org-publish-attachment
-         :recursive t
-         )
         ("web" :components ("blog" "static"))
         ("blog"
          :base-directory "~/everything/web/"
@@ -377,8 +357,7 @@
 ;; bbdb
 ;;
 
-(require 'bbdb)
-(require 'bbdb-autoloads)
+(require 'bbdb-loaddefs)
 (require 'bbdb-gnus)
 (bbdb-initialize 'gnus 'message)
 (bbdb-insinuate-message)
