@@ -12,9 +12,9 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(mediawiki-site-alist (quote (("Wikipedia" "http://en.wikipedia.org/w/" "username" "password" "Main Page") ("CGAL" "https://cgal.geometryfactory.com/CGAL/Members/w/" "Pmoeller" "" "Main Page"))))
- '(org-agenda-files (quote ("~/everything/org/notes.org")))
- '(org-archive-location "~/everything/org/archive.org::From %s")
- '(org-capture-templates (quote (("l" "Link" entry (file+headline "~/everything/org/notes.org" "Links") "* TODO %(get-page-title (current-kill 0))" :immediate-finish t) ("t" "Task" entry (file+headline "~/everything/org/notes.org" "Tasks") "* TODO %?
+ '(org-agenda-files (quote ("~/org/notes.org")))
+ '(org-archive-location "~/org/archive.org::From %s")
+ '(org-capture-templates (quote (("l" "Link" entry (file+headline "~/org/notes.org" "Links") "* TODO %(get-page-title (current-kill 0))" :immediate-finish t) ("t" "Task" entry (file+headline "~/org/notes.org" "Tasks") "* TODO %?
   %u
   %a" :prepend t))))
  '(org-export-latex-classes (quote (("article" "\\documentclass[12pt]{article}" ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}") ("\\paragraph{%s}" . "\\paragraph*{%s}") ("\\subparagraph{%s}" . "\\subparagraph*{%s}")) ("report" "\\documentclass[11pt]{report}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("book" "\\documentclass[11pt]{book}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("beamer" "\\documentclass{beamer}" org-beamer-sectioning))))
@@ -289,7 +289,7 @@
       '(
         ("web" :components ("blog" "static"))
         ("blog"
-         :base-directory "~/everything/web/"
+         :base-directory "~/web/"
          :base-extension "org"
          :publishing-directory "~/public_html/"
          :html-preamble nil
@@ -298,7 +298,7 @@
          )
         ;; static files like images  and static html as well
         ("static"
-         :base-directory "~/everything/web/"
+         :base-directory "~/web/"
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|html"
          :publishing-directory "~/public_html/"
          :recursive t
@@ -314,7 +314,7 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 (add-hook 'org-mode-hook 'auto-fill-mode)
 
-(setq org-directory "~/everything/org")
+(setq org-directory "~/org")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (setq org-agenda-custom-commands '(("h" "Daily habits" ((agenda ""))
@@ -331,22 +331,17 @@
                                      ))
                                    ))
 (defun get-page-title (url)
-  "Get title of web page, whose url can be found in the current line"
-  ;; Get title of web page, with the help of functions in url.el
+  "Try to get the title of the html page given by url. This is seriously broken. setq etc."
   (interactive)
   (with-current-buffer (url-retrieve-synchronously url)
-    ;; find title by grep the html code
     (goto-char 0)
     (re-search-forward "<title>\\([^<]*\\)</title>" nil t 1)
     (setq web_title_str (match-string 1))
-    ;; find charset by grep the html code
     (goto-char 0)
 
-    ;; find the charset, assume utf-8 otherwise
     (if (re-search-forward "charset=\\([-0-9a-zA-Z]*\\)" nil t 1)
         (setq coding_charset (downcase (match-string 1)))
       (setq coding_charset "utf-8")
-    ;; decode the string of title.
     (setq web_title_str (decode-coding-string web_title_str (intern
                                                              coding_charset)))
     )
@@ -361,7 +356,7 @@
 (require 'bbdb-gnus)
 (bbdb-initialize 'gnus 'message)
 (bbdb-insinuate-message)
-(setq bbdb-file "~/everything/org/bbdb")
+(setq bbdb-file "~/org/bbdb")
 (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
 
 ;;
