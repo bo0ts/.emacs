@@ -259,6 +259,17 @@
 (add-to-list 'auto-mode-alist '("\\.glsl$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
 
+;;
+;; cmake-mode
+;;
+
+(require 'cmake-mode)
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+                ("\\.cmake\\'" . cmake-mode))
+              auto-mode-alist))
+
+
 ;; 
 ;; yasnippets
 ;;
