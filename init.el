@@ -100,7 +100,8 @@
       gnus-use-dribble-file nil
       ;; speed killer
       gnus-fetch-old-headers nil
-      gnus-agent nil)
+      gnus-agent nil
+      imap-store-password t)
 (setq gnus-posting-styles
       '(("gmail" 
          (name "Philipp Moeller")
