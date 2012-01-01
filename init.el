@@ -5,6 +5,7 @@
  '(erc-play-sound nil)
  '(erc-sound-mode t)
  '(erc-try-new-nick-p nil)
+ '(gc-cons-threshold 3500000)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(mediawiki-site-alist (quote (("Wikipedia" "http://en.wikipedia.org/w/" "username" "password" "Main Page") ("CGAL" "https://cgal.geometryfactory.com/CGAL/Members/w/" "Pmoeller" "" "Main Page"))))
