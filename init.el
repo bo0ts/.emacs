@@ -122,6 +122,7 @@
 (setq nnimap-split-rule '(("cgal-develop"   "^Subject:.*\\[cgal-develop\\]")
                           ("cgal-discuss"   "^Subject:.*\\[cgal-discuss\\]")
                           ("couchsurfing"   "^From:.*CouchSurfing")
+                          ("bbdb"           "^To:.*bbdb-info@lists.sourceforge.net")
                           ))
 
 
