@@ -102,7 +102,7 @@
       ;; speed killer
       gnus-fetch-old-headers nil
       gnus-agent nil
-      imap-store-password t)
+      nnimap-inbox "INBOX")
 (setq gnus-posting-styles
       '(("gmail" 
          (name "Philipp Moeller")
@@ -117,14 +117,16 @@
          (signature "Philipp Moeller, GeometryFactory"))
         ))
 
-(setq nnimap-split-inbox "INBOX"
-      nnimap-split-predicate "UNDELETED")
-(setq nnimap-split-rule '(("cgal-develop"   "^Subject:.*\\[cgal-develop\\]")
-                          ("cgal-discuss"   "^Subject:.*\\[cgal-discuss\\]")
-                          ("couchsurfing"   "^From:.*CouchSurfing")
-                          ("bbdb"           "^To:.*bbdb-info@lists.sourceforge.net")
-                          ))
-
+(setq nnmail-split-methods '(("cgal-develop"   "^Subject:.*\\[cgal-develop\\]")
+                             ("cgal-discuss"   "^Subject:.*\\[cgal-discuss\\]")
+                             ("couchsurfing"   "^From:.*CouchSurfing")
+                             ("bbdb"           "^To:.*bbdb-info@lists.sourceforge.net")
+                             ))
+(setq nnimap-split-methods '(("cgal-develop"   "^Subject:.*\\[cgal-develop\\]")
+                             ("cgal-discuss"   "^Subject:.*\\[cgal-discuss\\]")
+                             ("couchsurfing"   "^From:.*CouchSurfing")
+                             ("bbdb"           "^To:.*bbdb-info@lists.sourceforge.net")
+                             ))
 
 ;;
 ;; smtp mail configuration
