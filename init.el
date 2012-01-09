@@ -1,4 +1,9 @@
 (custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(auth-source-save-behavior nil)
  '(calendar-week-start-day 1)
  '(erc-modules (quote (autojoin button completion fill irccontrols keep-place list match menu move-to-prompt netsplit networks noncommands readonly ring stamp spelling track)))
  '(erc-nickserv-identify-mode (quote nick-change))
@@ -23,6 +28,10 @@
  '(url-max-redirections 30)
  '(yas/prompt-functions (quote (yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))))
 (custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(org-hide ((((background dark)) (:foreground "#2b2b2b")))))
 
 ;;
@@ -121,6 +130,7 @@
                              ("cgal-discuss"   "^Subject:.*\\[cgal-discuss\\]")
                              ("couchsurfing"   "^From:.*CouchSurfing")
                              ("bbdb"           "^To:.*bbdb-info@lists.sourceforge.net")
+                             ("boost" "^To:.*boost-users@lists.boost.org")
                              ))
 (setq nnimap-split-methods '(("cgal-develop"   "^Subject:.*\\[cgal-develop\\]")
                              ("cgal-discuss"   "^Subject:.*\\[cgal-discuss\\]")
