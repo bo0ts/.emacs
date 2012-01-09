@@ -126,18 +126,22 @@
          (signature "Philipp Moeller, GeometryFactory"))
         ))
 
-(setq nnmail-split-methods '(("cgal-develop"   "^Subject:.*\\[cgal-develop\\]")
-                             ("cgal-discuss"   "^Subject:.*\\[cgal-discuss\\]")
-                             ("cgal-bindings-discuss"   "^Subject:.*\\[cgal-bindings-discuss\\]")
-                             ("couchsurfing"   "^From:.*CouchSurfing")
-                             ("bbdb"           "^To:.*bbdb-info@lists.sourceforge.net")
-                             ))
-(setq nnimap-split-methods '(("cgal-develop"   "^Subject:.*\\[cgal-develop\\]")
-                             ("cgal-discuss"   "^Subject:.*\\[cgal-discuss\\]")
-                             ("cgal-bindings-discuss"   "^Subject:.*\\[cgal-bindings-discuss\\]")
-                             ("couchsurfing"   "^From:.*CouchSurfing")
-                             ("bbdb"           "^To:.*bbdb-info@lists.sourceforge.net")
-                             ))
+(setq nnmail-split-methods 
+      '(("cgal-develop"          "^Subject:.*\\[cgal-develop\\]")
+        ("cgal-discuss"          "^Subject:.*\\[cgal-discuss\\]")
+        ("cgal-bindings-discuss" "^Subject:.*\\[cgal-bindings-discuss\\]")
+        ("couchsurfing"          "^From:.*CouchSurfing")
+        ("bbdb"                  "^To:.*bbdb-info@lists.sourceforge.net")
+        ("osg-users"             "^Subject:.*\\[osg-users\\]")
+        ))
+(setq nnimap-split-methods 
+      '(("cgal-develop"          "^Subject:.*\\[cgal-develop\\]")
+        ("cgal-discuss"          "^Subject:.*\\[cgal-discuss\\]")
+        ("cgal-bindings-discuss" "^Subject:.*\\[cgal-bindings-discuss\\]")
+        ("couchsurfing"          "^From:.*CouchSurfing")
+        ("bbdb"                  "^To:.*bbdb-info@lists.sourceforge.net")
+        ("osg-users"             "^Subject:.*\\[osg-users\\]")
+        ))
 
 ;;
 ;; smtp mail configuration
