@@ -248,6 +248,8 @@ the indentation.  Otherwise it retains the same position on the line"
   (modify-syntax-entry ?\)  ")(" cmake-mode-syntax-table)
   (modify-syntax-entry ?# "<" cmake-mode-syntax-table)
   (modify-syntax-entry ?\n ">" cmake-mode-syntax-table)
+  (modify-syntax-entry ?_ "_" cmake-mode-syntax-table)
+
 
   ; Setup font-lock mode.
   (make-local-variable 'font-lock-defaults)
