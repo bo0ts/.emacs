@@ -61,6 +61,15 @@
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
+;;
+;; dsvn for subversion 1.7
+;;
+
+(autoload 'svn-status "dsvn" "Run `svn status'." t)
+(autoload 'svn-update "dsvn" "Run `svn update'." t)
+(require 'vc-svn)
+
+
 ;; 
 ;; various modes and keybindings, things that are too small for their
 ;; own section
@@ -111,7 +120,8 @@
       ;; speed killer
       gnus-fetch-old-headers nil
       gnus-agent nil
-      nnimap-inbox "INBOX")
+      nnimap-inbox "INBOX"
+      gnus-use-full-window nil)
 (setq gnus-posting-styles
       '(("gmail" 
          (name "Philipp Moeller")
