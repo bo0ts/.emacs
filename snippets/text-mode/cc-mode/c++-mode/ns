@@ -1,5 +1,5 @@
 #name : namespace ...
 # --
 namespace ${1:NS} {
-
+  $0
 } // $1

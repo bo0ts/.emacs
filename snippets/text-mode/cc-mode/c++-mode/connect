@@ -1,0 +1,4 @@
+#name : connect(${1:this}, SIGNAL(${2:method}(${3:arg})), ${4:this}, SLOT((${4:$3})))
+# --
+connect(${1:this}, SIGNAL(${2:func}(${3:arg})), ${4:this}, SLOT(${5:func}(${6:$3})));
+$0
