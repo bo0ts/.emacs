@@ -46,6 +46,9 @@
 
 (load-file "~/.emacs.d/zenburn/color-theme-zenburn.el")
 
+;; ask briefly
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (server-start)
 
 ;;
