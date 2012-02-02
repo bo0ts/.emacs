@@ -42,7 +42,7 @@
 
 (let ((default-directory  "~/.emacs.d/"))
   (normal-top-level-add-to-load-path 
-   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized" "autopair")))
+   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized" "autopair" "expand-region.el")))
 
 (load-file "~/.emacs.d/zenburn/color-theme-zenburn.el")
 
@@ -72,6 +72,12 @@
 (autoload 'svn-update "dsvn" "Run `svn update'." t)
 (require 'vc-svn)
 
+;;
+;; expand-region
+;;
+
+(require 'expand-region)
+(global-set-key "\C-@" 'er/expand-region)
 
 ;; 
 ;; various modes and keybindings, things that are too small for their
