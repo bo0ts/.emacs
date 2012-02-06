@@ -288,6 +288,8 @@
                       (url-hexify-string
                        (encode-coding-string search-string 'utf-8)))))
 
+(add-hook 'c++-mode-hook 'subword-mode)
+
 (add-to-list 'auto-mode-alist '("\\.glsl$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
 
