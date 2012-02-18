@@ -42,9 +42,15 @@
 
 (let ((default-directory  "~/.emacs.d/"))
   (normal-top-level-add-to-load-path 
-   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized" "autopair" "expand-region.el")))
+   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized" "autopair" "expand-region.el" "dired-plus")))
 
 (load-file "~/.emacs.d/zenburn/color-theme-zenburn.el")
+
+;;
+;; dired-plus
+;; 
+
+(require 'dired+)
 
 ;; ask briefly
 (defalias 'yes-or-no-p 'y-or-n-p)
