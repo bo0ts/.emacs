@@ -65,7 +65,6 @@
 (require 'color-theme-zenburn)
 (require 'color-theme-solarized)
 (color-theme-zenburn)
-(set-fringe-mode 0)
 
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
