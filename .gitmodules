@@ -19,3 +19,6 @@
 [submodule "expand-region.el"]
 	path = expand-region.el
 	url = git@github.com:bo0ts/expand-region.el.git
+[submodule "dired-plus"]
+	path = dired-plus
+	url = https://github.com/emacsmirror/dired-plus.git
