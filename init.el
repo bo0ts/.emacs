@@ -134,7 +134,7 @@
          (address "philipp.moeller@geometryfactory.com") 
          (organization "GeometryFactory")
          ("X-SMTP-Server" "philipp.moeller@geometryfactory.com:ssl0.ovh.net:587")
-         (signature "Philipp Moeller, GeometryFactory"))
+         (signature "Philipp Moeller\nGeometryFactory"))
         ))
 
 (setq nnmail-split-methods 
@@ -271,6 +271,8 @@
 ;; c++
 ;;
 
+(require 'doxymacs)
+
 (setq c-default-style "stroustrup"
       c-basic-offset 2)
 
@@ -289,6 +291,7 @@
                        (encode-coding-string search-string 'utf-8)))))
 
 (add-hook 'c++-mode-hook 'subword-mode)
+(add-hook 'c++-mode-hook 'doxymacs-mode)
 
 (add-to-list 'auto-mode-alist '("\\.glsl$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
