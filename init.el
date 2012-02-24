@@ -47,6 +47,12 @@
 (load-file "~/.emacs.d/zenburn/color-theme-zenburn.el")
 
 ;;
+;; store bookmarks along with org notes
+;;
+
+(setq bookmark-file "~/org/bookmarks.bmk")
+
+;;
 ;; dired-plus
 ;; 
 
@@ -149,7 +155,7 @@
         ("couchsurfing"          "^From:.*CouchSurfing")
         ("bbdb"                  "^To:.*bbdb-info@lists.sourceforge.net")
         ("osg-users"             "^Subject:.*\\[osg-users\\]")
-        ("boost"                 "^To:.*boost-users@lists.boost.org")
+        ("boost"                 "^To:.*boost*@lists.boost.org")
         ))
 (setq nnimap-split-methods 
       '(("cgal-develop"          "^Subject:.*\\[cgal-develop\\]")
@@ -158,7 +164,7 @@
         ("couchsurfing"          "^From:.*CouchSurfing")
         ("bbdb"                  "^To:.*bbdb-info@lists.sourceforge.net")
         ("osg-users"             "^Subject:.*\\[osg-users\\]")
-        ("boost"                 "^To:.*boost-users@lists.boost.org")
+        ("boost"                 "^To:.*boost.*@lists.boost.org")
         ))
 
 ;;
