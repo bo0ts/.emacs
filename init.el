@@ -337,6 +337,9 @@
 (require 'org-publish)
 (require 'org-exp-bibtex)
 
+(require 'french-holidays)
+(setq calendar-holidays holiday-french-holidays)
+
 (setq org-publish-project-alist
       '(
         ("web" :components ("blog" "static"))
