@@ -42,7 +42,7 @@
 
 (let ((default-directory  "~/.emacs.d/"))
   (normal-top-level-add-to-load-path 
-   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized" "autopair" "expand-region.el" "dired-plus")))
+   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized" "autopair" "expand-region.el" "dired-plus" "magit")))
 
 (load-file "~/.emacs.d/zenburn/color-theme-zenburn.el")
 
@@ -62,6 +62,12 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (server-start)
+
+;;
+;; version-control
+;;
+
+(require 'magit)
 
 ;;
 ;; themes

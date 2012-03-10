@@ -22,3 +22,6 @@
 [submodule "dired-plus"]
 	path = dired-plus
 	url = https://github.com/emacsmirror/dired-plus.git
+[submodule "magit"]
+	path = magit
+	url = https://github.com/magit/magit.git
