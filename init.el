@@ -293,6 +293,7 @@
 
 (setq c-default-style "stroustrup"
       c-basic-offset 2)
+(c-set-offset 'innamespace 0)
 
 (defun cplusplus-query (search-string)
   "Search for SEARCH-STRING on cplusplus.com"
