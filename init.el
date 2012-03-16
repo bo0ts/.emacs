@@ -36,6 +36,15 @@
  '(org-hide ((((background dark)) (:foreground "#2b2b2b")))))
 
 ;;
+;; random unicode that makes typing german a lot more pleasant
+;;
+
+(define-key key-translation-map (kbd "M-p o") (kbd "ö"))
+(define-key key-translation-map (kbd "M-p u") (kbd "ü"))
+(define-key key-translation-map (kbd "M-p a") (kbd "ä"))
+(define-key key-translation-map (kbd "M-p s") (kbd "ß"))
+
+;;
 ;; setup
 ;;
 
@@ -88,6 +97,8 @@
 
 (require 'expand-region)
 (global-set-key "\C-@" 'er/expand-region)
+
+
 
 ;; 
 ;; various modes and keybindings, things that are too small for their
