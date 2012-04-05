@@ -56,6 +56,10 @@
 
 (load-file "~/.emacs.d/zenburn/color-theme-zenburn.el")
 
+;; don't make backups. i have version control for a reason.
+
+(setq make-backup-filess nil)
+
 ;;
 ;; store bookmarks along with org notes
 ;;
@@ -275,18 +279,18 @@
 ;; latex/auctex
 ;; 
 
-;; (setq TeX-auto-save nil)
-;; (setq TeX-parse-self t)
-;; (setq require-final-newline nil)
+(setq TeX-auto-save nil)
+(setq TeX-parse-self t)
+(setq require-final-newline nil)
 
-;; (load "auctex.el" nil t t)
-;; (load "preview-latex.el" nil t t)
+(load "auctex.el" nil t t)
+(load "preview-latex.el" nil t t)
 
-;; (add-hook 'TeX-mode-hook
-;;           (lambda ()
-;;             (set (make-local-variable 'compile-command)
-;;                  (concat "pdflatex -interaction nonstopmode -file-line-error "
-;;                          (buffer-name)))))
+(add-hook 'TeX-mode-hook
+          (lambda ()
+            (set (make-local-variable 'compile-command)
+                 (concat "pdflatex -interaction nonstopmode -file-line-error "
+                         (buffer-name)))))
 
 ;;
 ;; haskell-related
