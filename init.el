@@ -124,7 +124,11 @@
 
 (require 'autopair)
 (autopair-global-mode 1)
-
+(add-hook 'latex-mode-hook
+          #'(lambda ()
+              (set (make-local-variable 'autopair-handle-action-fns)
+                   (list #'autopair-default-handle-action
+                         #'autopair-latex-mode-paired-delimiter-action))))
 
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
