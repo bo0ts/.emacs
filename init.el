@@ -58,7 +58,7 @@
 
 ;; don't make backups. i have version control for a reason.
 
-(setq make-backup-filess nil)
+(setq make-backup-files nil)
 
 ;;
 ;; store bookmarks along with org notes
