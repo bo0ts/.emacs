@@ -5,6 +5,8 @@
   ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
  '(calendar-week-start-day 1)
+ '(doxymacs-blank-multiline-comment-template (quote (> "///" n > "/// " n > "///")))
+ '(doxymacs-doxygen-style "C++")
  '(erc-modules (quote (autojoin button completion fill irccontrols keep-place list match menu move-to-prompt netsplit networks noncommands readonly ring stamp spelling track)))
  '(erc-nickserv-identify-mode (quote nick-change))
  '(erc-play-sound nil)
