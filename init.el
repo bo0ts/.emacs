@@ -40,8 +40,11 @@
 ;;
 
 (define-key key-translation-map (kbd "M-p o") (kbd "ö"))
+(define-key key-translation-map (kbd "M-p O") (kbd "Ö"))
 (define-key key-translation-map (kbd "M-p u") (kbd "ü"))
+(define-key key-translation-map (kbd "M-p U") (kbd "Ü"))
 (define-key key-translation-map (kbd "M-p a") (kbd "ä"))
+(define-key key-translation-map (kbd "M-p A") (kbd "Ä"))
 (define-key key-translation-map (kbd "M-p s") (kbd "ß"))
 
 ;;
