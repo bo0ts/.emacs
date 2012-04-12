@@ -28,7 +28,9 @@
                                               (nnimap-server-port 993)
                                               (nnimap-stream ssl)
                                               (nnir-search-engine imap))
+                                      (nntp "news.gwene.org")
                                       ))
+;; (add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
 
 ;; html mails
 (require 'w3m)
