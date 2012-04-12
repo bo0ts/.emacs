@@ -187,6 +187,7 @@
         ("bbdb"                  "^To:.*bbdb-info@lists.sourceforge.net")
         ("osg-users"             "^Subject:.*\\[osg-users\\]")
         ("boost"                 "^To:.*boost*@lists.boost.org")
+        ("gsoc" "^Subject:.*\\[GSoC Mentors\\]")
         ))
 (setq nnimap-split-methods 
       '(("cgal-develop"          "^Subject:.*\\[cgal-develop\\]")
@@ -196,6 +197,7 @@
         ("bbdb"                  "^To:.*bbdb-info@lists.sourceforge.net")
         ("osg-users"             "^Subject:.*\\[osg-users\\]")
         ("boost"                 "^To:.*boost.*@lists.boost.org")
+        ("gsoc" "^Subject:.*\\[GSoC Mentors\\]")
         ))
 
 ;;
