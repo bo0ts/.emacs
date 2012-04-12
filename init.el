@@ -57,9 +57,14 @@
 
 (let ((default-directory  "~/.emacs.d/"))
   (normal-top-level-add-to-load-path 
-   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized" "autopair" "expand-region.el" "dired-plus" "magit")))
+   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized" "autopair" "expand-region.el" "dired-plus" "magit" "ace-jump-mode")))
 
 (load-file "~/.emacs.d/zenburn/color-theme-zenburn.el")
+
+;; ask briefly
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(server-start)
 
 ;; don't make backups. i have version control for a reason.
 
@@ -77,16 +82,18 @@
 
 (require 'dired+)
 
-;; ask briefly
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-(server-start)
-
 ;;
 ;; version-control
 ;;
 
 (require 'magit)
+
+;;
+;; ace-jump-mode
+;; 
+
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode)
 
 ;;
 ;; themes
