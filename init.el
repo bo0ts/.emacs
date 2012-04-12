@@ -104,8 +104,9 @@
 (require 'color-theme-solarized)
 (color-theme-zenburn)
 
-
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+(hl-line-mode 1)
 
 ;;
 ;; expand-region
