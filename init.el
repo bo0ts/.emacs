@@ -106,7 +106,7 @@
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-(hl-line-mode 1)
+(global-hl-line-mode 1)
 
 ;;
 ;; expand-region
