@@ -196,6 +196,7 @@
         ("osg-users"             "^Subject:.*\\[osg-users\\]")
         ("boost"                 "^To:.*boost*@lists.boost.org")
         ("gsoc" "^Subject:.*\\[GSoC Mentors\\]")
+        ("gsoc" "^Subject:.*\\[gsoc-cgal\\]")
         ))
 (setq nnimap-split-methods 
       '(("cgal-develop"          "^Subject:.*\\[cgal-develop\\]")
@@ -206,6 +207,7 @@
         ("osg-users"             "^Subject:.*\\[osg-users\\]")
         ("boost"                 "^To:.*boost.*@lists.boost.org")
         ("gsoc" "^Subject:.*\\[GSoC Mentors\\]")
+        ("gsoc" "^Subject:.*\\[gsoc-cgal\\]")
         ))
 
 ;;
