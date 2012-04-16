@@ -173,6 +173,7 @@
       gnus-agent nil
       nnimap-inbox "INBOX"
       gnus-use-full-window nil)
+
 (setq gnus-posting-styles
       '(("gmail" 
          (name "Philipp Moeller")
@@ -187,6 +188,8 @@
          (signature "Philipp Moeller\nGeometryFactory"))
         ))
 
+(add-hook 'message-mode-hook 'footnote-mode)
+
 (setq nnmail-split-methods 
       '(("cgal-develop"          "^Subject:.*\\[cgal-develop\\]")
         ("cgal-discuss"          "^Subject:.*\\[cgal-discuss\\]")
@@ -195,7 +198,7 @@
         ("bbdb"                  "^To:.*bbdb-info@lists.sourceforge.net")
         ("osg-users"             "^Subject:.*\\[osg-users\\]")
         ("boost"                 "^To:.*boost*@lists.boost.org")
-        ("gsoc" "^Subject:.*\\[GSoC Mentors\\]")
+        ("gsoc"                  "^Subject:.*\\[GSoC Mentors\\]")
         ))
 (setq nnimap-split-methods 
       '(("cgal-develop"          "^Subject:.*\\[cgal-develop\\]")
@@ -205,7 +208,8 @@
         ("bbdb"                  "^To:.*bbdb-info@lists.sourceforge.net")
         ("osg-users"             "^Subject:.*\\[osg-users\\]")
         ("boost"                 "^To:.*boost.*@lists.boost.org")
-        ("gsoc" "^Subject:.*\\[GSoC Mentors\\]")
+        ("gsoc"                  "^Subject:.*\\[GSoC Mentors\\]")
+        ("cgal-commits"          "^From:.*cgal-commits-request")
         ))
 
 ;;
