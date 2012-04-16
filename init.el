@@ -35,6 +35,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(font-latex-subscript-face ((t nil)))
  '(org-hide ((((background dark)) (:foreground "#2b2b2b")))))
 
 ;;
@@ -106,7 +107,7 @@
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-(hl-line-mode 1)
+(global-hl-line-mode 1)
 
 ;;
 ;; expand-region
@@ -199,6 +200,8 @@
         ("osg-users"             "^Subject:.*\\[osg-users\\]")
         ("boost"                 "^To:.*boost*@lists.boost.org")
         ("gsoc"                  "^Subject:.*\\[GSoC Mentors\\]")
+        ("gsoc"                  "^Subject:.*\\[gsoc-cgal\\]")
+        ("cgal-commits"          "^From:.*cgal-commits-request")
         ))
 (setq nnimap-split-methods 
       '(("cgal-develop"          "^Subject:.*\\[cgal-develop\\]")
@@ -209,6 +212,7 @@
         ("osg-users"             "^Subject:.*\\[osg-users\\]")
         ("boost"                 "^To:.*boost.*@lists.boost.org")
         ("gsoc"                  "^Subject:.*\\[GSoC Mentors\\]")
+        ("gsoc"                  "^Subject:.*\\[gsoc-cgal\\]")
         ("cgal-commits"          "^From:.*cgal-commits-request")
         ))
 
