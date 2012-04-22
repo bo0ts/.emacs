@@ -462,7 +462,9 @@
 (require 'bbdb-gnus)
 (bbdb-initialize 'gnus 'message)
 (bbdb-insinuate-message)
-(setq bbdb-file "~/org/bbdb")
+(setq bbdb-file "~/org/bbdb"
+      bbdb-complete-mail-allow-cycling t)
+
 (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
 
 ;;
