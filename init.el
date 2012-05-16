@@ -58,7 +58,7 @@
 
 (let ((default-directory  "~/.emacs.d/"))
   (normal-top-level-add-to-load-path 
-   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized" "autopair" "expand-region.el" "dired-plus" "magit" "ace-jump-mode")))
+   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized" "autopair" "expand-region.el" "dired-plus" "magit" "ace-jump-mode" "markdown-mode")))
 
 (load-file "~/.emacs.d/zenburn/color-theme-zenburn.el")
 
@@ -88,6 +88,15 @@
 ;;
 
 (require 'magit)
+
+;;
+;; markdown-mode
+;; 
+
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+      (cons '("\\.text" . markdown-mode) auto-mode-alist))
 
 ;;
 ;; ace-jump-mode
