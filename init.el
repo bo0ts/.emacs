@@ -90,6 +90,7 @@
 ;;
 
 (require 'magit)
+(global-set-key "\M-\C-g" 'magit-status)
 
 ;;
 ;; markdown-mode
