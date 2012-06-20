@@ -27,8 +27,6 @@
  '(org-time-stamp-rounding-minutes (quote (0 15)))
  '(savehist-file "~/.em_hist")
  '(savehist-mode t nil (savehist))
- '(smtpmail-smtp-server "smtp.gmail.com")
- '(smtpmail-smtp-service 587)
  '(standard-indent 2)
  '(url-max-redirections 30)
  '(yas/prompt-functions (quote (yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))))
@@ -187,20 +185,6 @@
       nnimap-inbox "INBOX"
       gnus-use-full-window nil)
 
-(setq gnus-posting-styles
-      '(("gmail" 
-         (name "Philipp Moeller")
-         (address "bootsarehax@gmail.com") 
-         ("X-SMTP-Server" "bootsarehax@gmail.com:smtp.gmail.com:587")
-         (signature "Philipp"))
-        ("geometry" 
-         (name "Philipp Moeller")
-         (address "philipp.moeller@geometryfactory.com") 
-         (organization "GeometryFactory")
-         ("X-SMTP-Server" "philipp.moeller@geometryfactory.com:ssl0.ovh.net:587")
-         (signature "Philipp Moeller\nGeometryFactory"))
-        ))
-
 (add-hook 'message-mode-hook 'footnote-mode)
 
 (setq nnmail-split-methods 
@@ -230,48 +214,29 @@
         ("[Google Mail]/Bin"     "^From:.*eBay.*")
         ))
 
-;;
-;; smtp mail configuration
-;;
-
-(eval-after-load "smtpmail"
-  '(progn
-     (defun smtpmail-get-and-delete-smtp-server-from-header ()
-       "Find header field X-SMTP-Server and if found return value as
-         string and delete header field. If a header field of this
-         name doesn't exist, return nil."
-       (save-excursion
-         (goto-char (point-min))
-         (save-match-data
-           (let ((smtp-server))
-             (loop until (or (eobp) (looking-at "^[ \t]*$"))
-                   if (looking-at "X-SMTP-Server[ \t]*:[ \t]*\\(.*?\\)[ \t]*\n")
-                   return (prog1 (match-string 1) (replace-match ""))
-                   else
-                   do (forward-line 1))))))
-     
-     (defadvice smtpmail-via-smtp (around set-smtp-server-from-header activate)
-       (let* ((server-pattern (split-string (or (smtpmail-get-and-delete-smtp-server-from-header)
-                          smtpmail-smtp-server) ":"))
-              (auth-cred (car server-pattern))
-              (server (car (cdr server-pattern)))
-              (port (car (cdr (cdr server-pattern))))
-              )
-         (setq smtpmail-starttls-credentials (list (list server port nil nil))
-               smtpmail-auth-credentials (list (list server port auth-cred nil))
-               smtpmail-smtp-server server
-               smtpmail-smtp-service port)
-         ad-do-it
-         ))))
-
 (require 'smtpmail)
 (require 'starttls)
 
+(defun smtp-select-server (server-name)
+  (interactive "sServer-Name: ")
+  (cond 
+   ((equal server-name "gmail")
+    (setq smtpmail-smtp-server "smtp.gmail.com")
+    (setq smtpmail-smtp-service 587)
+    (setq smtpmail-smtp-user "bootsarehax@gmail.com")
+    )
+   ((equal server-name "ovh")
+    (setq smtpmail-smtp-server "ssl0.ovh.net")
+    (setq smtpmail-smtp-service 587)
+    (setq smtpmail-smtp-user "philipp.moeller@geometryfactory.com")
+    )
+   (t
+    (error "No such server known"))
+   )
+  (smtpmail-send-it))
 
-
-(setq smtpmail-debug-info t
-      smtpmail-debug-verb t)
-(setq message-send-mail-function 'smtpmail-send-it)
+(setq send-mail-function '(lambda () (call-interactively 'smtp-select-server)))
+(setq message-send-mail-function  '(lambda () (call-interactively 'smtp-select-server)))
 
 ;;
 ;; erc
@@ -411,9 +376,15 @@
         ("blog"
          :base-directory "~/web/"
          :base-extension "org"
+         :exclude "\\(drafts\\|blog_export\\)\\.org"
+         :recursive t
          :publishing-directory "~/public_html/"
          :html-preamble nil
-         :html-postamble "<h2>Philipp's braindump</h2>Entirely experimental and subject to change"
+         :html-postamble nil
+         :auto-sitemap t
+         ;; :sitemap-sort-files "anti-chronologically"
+         :sitemap-filename "sitemap.org"
+         :sitemap-title "Sitemap"
          :publishing-function org-publish-org-to-html
          )
         ;; static files like images  and static html as well
@@ -425,6 +396,8 @@
          :publishing-function org-publish-attachment
          )
         ))
+
+(org-publish "web" t)
 
 (setq org-log-done t)
 (setq org-hide-leading-stars t)
