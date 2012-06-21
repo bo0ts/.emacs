@@ -5,6 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
  '(calendar-week-start-day 1)
+ '(custom-safe-themes (quote ("71b172ea4aad108801421cc5251edb6c792f3adbaecfa1c52e94e3d99634dee7" default)))
  '(doxymacs-blank-multiline-comment-template (quote (> "///" n > "/// " n > "///")))
  '(doxymacs-doxygen-style "C++")
  '(erc-modules (quote (autojoin button completion fill irccontrols keep-place list match menu move-to-prompt netsplit networks noncommands readonly ring stamp spelling track)))
@@ -25,6 +26,7 @@
  '(org-export-latex-classes (quote (("article" "\\documentclass[12pt]{article}" ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}") ("\\paragraph{%s}" . "\\paragraph*{%s}") ("\\subparagraph{%s}" . "\\subparagraph*{%s}")) ("report" "\\documentclass[11pt]{report}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("book" "\\documentclass[11pt]{book}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("beamer" "\\documentclass{beamer}" org-beamer-sectioning))))
  '(org-modules (quote (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-habit org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m)))
  '(org-time-stamp-rounding-minutes (quote (0 15)))
+ '(package-user-dir "~/elpa")
  '(savehist-file "~/.em_hist")
  '(savehist-mode t nil (savehist))
  '(standard-indent 2)
@@ -35,7 +37,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-latex-subscript-face ((t nil)))
+ '(font-latex-subscript-face ((t nil)) t)
  '(org-hide ((((background dark)) (:foreground "#2b2b2b")))))
 
 ;;
@@ -51,6 +53,44 @@
 (define-key key-translation-map (kbd "M-p s") (kbd "ß"))
 
 ;;
+;; packages
+;;
+
+(require 'package)
+
+;; Add the original Emacs Lisp Package Archive
+(add-to-list 'package-archives
+             '("elpa" . "http://tromey.com/elpa/"))
+;; Add the user-contributed repository
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/"))
+
+(package-initialize)
+(require 'cl)
+
+(defvar my-packages
+  '(autopair dired+ expand-region haskell-mode keyfreq zenburn-theme magit))
+
+;; (defun my-packages-installed-p ()
+;;   (loop for p in my-packages
+;;         do (message "%s %s" (package-installed-p p) p)))
+;; (package-installed-p 'keyfreq)
+
+;; (defun my-install-packages ()
+;;   (unless (my-packages-installed-p)
+;;     ;; check for new packages (package versions)
+;;     (message "%s" "Refreshing package database...")
+;;     (package-refresh-contents)
+;;     (message "%s" " done.")
+;;     ;; install the missing packages
+;;     (dolist (p my-packages)
+;;       (unless (package-installed-p p)
+;;         (package-install p)))))
+
+;;
 ;; setup
 ;;
 
@@ -58,12 +98,12 @@
 
 (let ((default-directory  "~/.emacs.d/"))
   (normal-top-level-add-to-load-path 
-   '("codepad" "keyfreq" "mediawiki" "emacs-color-theme-solarized" "autopair" "expand-region.el" "dired-plus" "magit" "ace-jump-mode" "markdown-mode")))
-
-(load-file "~/.emacs.d/zenburn/color-theme-zenburn.el")
+   '("codepad" "keyfreq" "mediawiki" "expand-region.el" "magit")))
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
+
+(load-theme 'zenburn)
 
 ;; ask briefly
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -103,20 +143,8 @@
       (cons '("\\.text" . markdown-mode) auto-mode-alist))
 
 ;;
-;; ace-jump-mode
-;; 
-
-(require 'ace-jump-mode)
-(define-key global-map (kbd "C-x SPC") 'ace-jump-mode)
-
-;;
 ;; themes
 ;;
-
-(require 'color-theme)
-(require 'color-theme-zenburn)
-(require 'color-theme-solarized)
-(color-theme-zenburn)
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
@@ -128,8 +156,6 @@
 
 (require 'expand-region)
 (global-set-key "\C-@" 'er/expand-region)
-
-
 
 ;; 
 ;; various modes and keybindings, things that are too small for their
@@ -169,7 +195,6 @@
 ;;
 
 (ido-mode 1)
-
 
 ;;
 ;; gnus
@@ -305,7 +330,6 @@
 ;; haskell-related
 ;;
 
-(load "/usr/share/emacs/site-lisp/haskell-mode/haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-ghci)
 
