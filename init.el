@@ -30,8 +30,7 @@
  '(savehist-file "~/.em_hist")
  '(savehist-mode t nil (savehist))
  '(standard-indent 2)
- '(url-max-redirections 30)
- '(yas/prompt-functions (quote (yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))))
+ '(url-max-redirections 30))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -379,11 +378,14 @@
 ;; yasnippets
 ;;
 
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/yas")
 (require 'yasnippet) ;; not yasnippet-bundle
-(yas/initialize)
-(setq yas/root-directory "~/.emacs.d/snippets/")
-(yas/load-directory yas/root-directory)
+(yas/global-mode 1)
+(setq yas/snippet-dirs "~/.emacs.d/snippets/")
+
+(require 'dropdown-list)
+(setq yas/prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))
+
+
 
 ;;
 ;; org-mode
