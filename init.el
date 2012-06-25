@@ -100,10 +100,6 @@
   (normal-top-level-add-to-load-path 
    '("codepad" "keyfreq" "mediawiki" "expand-region.el" "magit")))
 
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-
-(load-theme 'zenburn)
 
 ;; ask briefly
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -111,8 +107,19 @@
 (server-start)
 
 ;; don't make backups. i have version control for a reason.
-
 (setq make-backup-files nil)
+
+;;
+;; theming
+;;
+
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+(fringe-mode 0)
+(load-theme 'zenburn)
+(global-hl-line-mode 1)
+
 
 ;;
 ;; store bookmarks along with org notes
@@ -141,14 +148,16 @@
   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
       (cons '("\\.text" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist
+      (cons '("\\.txt" . markdown-mode) auto-mode-alist))
 
 ;;
-;; themes
+;; win-switch
 ;;
 
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(require 'win-switch)
+(win-switch-setup-keys-ijkl "\C-xo")
 
-(global-hl-line-mode 1)
 
 ;;
 ;; expand-region
@@ -182,6 +191,8 @@
               (set (make-local-variable 'autopair-handle-action-fns)
                    (list #'autopair-default-handle-action
                          #'autopair-latex-mode-paired-delimiter-action))))
+
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
