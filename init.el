@@ -99,6 +99,7 @@
   (normal-top-level-add-to-load-path 
    '("codepad" "keyfreq" "mediawiki" "expand-region.el" "magit")))
 
+(setq user-mail-address "philipp.moeller@geometryfactory.com")
 
 ;; ask briefly
 (defalias 'yes-or-no-p 'y-or-n-p)
