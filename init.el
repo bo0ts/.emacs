@@ -437,8 +437,6 @@
          )
         ))
 
-(org-publish "web" t)
-
 (setq org-log-done t)
 (setq org-hide-leading-stars t)
 (global-set-key "\C-cl" 'org-store-link)
