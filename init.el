@@ -152,14 +152,6 @@
       (cons '("\\.txt" . markdown-mode) auto-mode-alist))
 
 ;;
-;; win-switch
-;;
-
-(require 'win-switch)
-(win-switch-setup-keys-ijkl "\C-xo")
-
-
-;;
 ;; expand-region
 ;;
 
@@ -232,12 +224,14 @@
               ;; (x-face-file "~/.xface")
               (x-url "www.geometryfactory.com")
               (organization "GeometryFactory")
-              (From "Philipp Moeller <philipp.moeller@geometryfactory.com>"))
+              (From "Philipp Moeller <philipp.moeller@geometryfactory.com>")
+              (Cc "Philipp Moeller <philipp.moeller@geometryfactory.com>")
+              )
              (".*gmail.*"
               (name "Philipp Moeller")
               (signature "Philipp")
-              (x-url "www.limitingfactor.com")
               (From "Philipp Moeller <boostarehax@gmail.com>")
+              (Cc "Philipp Moeller <boostarehax@gmail.com>")
               )))
 
 
