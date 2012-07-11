@@ -225,6 +225,21 @@
       gnus-use-full-window nil)
 
 (add-hook 'message-mode-hook 'footnote-mode)
+(setq gnus-posting-styles
+           '((".*geometry.*"
+              (signature "Philipp Moeller \n GeometryFactory")
+              (name "Philipp Moeller")
+              ;; (x-face-file "~/.xface")
+              (x-url "www.geometryfactory.com")
+              (organization "GeometryFactory")
+              (From "Philipp Moeller <philipp.moeller@geometryfactory.com>"))
+             (".*gmail.*"
+              (name "Philipp Moeller")
+              (signature "Philipp")
+              (x-url "www.limitingfactor.com")
+              (From "Philipp Moeller <boostarehax@gmail.com>")
+              )))
+
 
 (setq nnmail-split-methods 
       '(("cgal-develop"          "^Subject:.*\\[cgal-develop\\]")
@@ -258,15 +273,16 @@
 (require 'smtpmail)
 (require 'starttls)
 
-(defun smtp-select-server (server-name)
-  (interactive "sServer-Name: ")
+(defun smtp-select-server ()
+  (setq send-from (message-fetch-field "from"))
+  (message "Sending from %s" send-from)
   (cond 
-   ((equal server-name "gmail")
+   ((equal send-from "Philipp Moeller <boostarehax@gmail.com>")
     (setq smtpmail-smtp-server "smtp.gmail.com")
     (setq smtpmail-smtp-service 587)
     (setq smtpmail-smtp-user "bootsarehax@gmail.com")
     )
-   ((equal server-name "ovh")
+   ((equal send-from "philipp.moeller@geometryfactory.com")
     (setq smtpmail-smtp-server "ssl0.ovh.net")
     (setq smtpmail-smtp-service 587)
     (setq smtpmail-smtp-user "philipp.moeller@geometryfactory.com")
@@ -276,8 +292,8 @@
    )
   (smtpmail-send-it))
 
-(setq send-mail-function '(lambda () (call-interactively 'smtp-select-server)))
-(setq message-send-mail-function  '(lambda () (call-interactively 'smtp-select-server)))
+(setq send-mail-function 'smtp-select-server)
+(setq message-send-mail-function 'smtp-select-server)
 
 ;;
 ;; erc
