@@ -219,8 +219,8 @@
 (add-hook 'message-mode-hook 'footnote-mode)
 (setq gnus-posting-styles
            '((".*geometry.*"
-              (signature "Philipp Moeller \n GeometryFactory")
               (name "Philipp Moeller")
+              (signature "Philipp Moeller \nGeometryFactory")
               ;; (x-face-file "~/.xface")
               (x-url "www.geometryfactory.com")
               (organization "GeometryFactory")
@@ -243,7 +243,7 @@
         ("bbdb"                  "^To:.*bbdb-info@lists.sourceforge.net")
         ("bbdb"                  "^Cc:.*bbdb-info@lists.sourceforge.net")
         ("osg-users"             "^Subject:.*\\[osg-users\\]")
-        ("boost"                 "^To:.*boost*@lists.boost.org")
+        ("boost"                 "^To:.*boost.*@lists.boost.org")
         ("gsoc"                  "^Subject:.*\\[GSoC Mentors\\]")
         ("gsoc"                  "^Subject:.*\\[gsoc-cgal\\]")
         ("cgal-commits"          "^From:.*cgal-commits-request")
@@ -263,7 +263,7 @@
     (setq smtpmail-smtp-service 587)
     (setq smtpmail-smtp-user "bootsarehax@gmail.com")
     )
-   ((equal send-from "philipp.moeller@geometryfactory.com")
+   ((equal send-from "Philipp Moeller <philipp.moeller@geometryfactory.com>")
     (setq smtpmail-smtp-server "ssl0.ovh.net")
     (setq smtpmail-smtp-service 587)
     (setq smtpmail-smtp-user "philipp.moeller@geometryfactory.com")
