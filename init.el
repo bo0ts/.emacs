@@ -230,8 +230,8 @@
              (".*gmail.*"
               (name "Philipp Moeller")
               (signature "Philipp")
-              (From "Philipp Moeller <boostarehax@gmail.com>")
-              (Cc "Philipp Moeller <boostarehax@gmail.com>")
+              (From "Philipp Moeller <bootsarehax@gmail.com>")
+              (Cc "Philipp Moeller <bootsarehax@gmail.com>")
               )))
 
 
