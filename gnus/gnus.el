@@ -40,4 +40,3 @@
 (setq mm-automatic-display (remove "text/html" mm-automatic-display)
     mm-discouraged-alternatives '("text/html" "text/richtext"))
 
-(gnus-compile)

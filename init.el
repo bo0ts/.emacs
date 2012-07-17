@@ -225,13 +225,11 @@
               (x-url "www.geometryfactory.com")
               (organization "GeometryFactory")
               (From "Philipp Moeller <philipp.moeller@geometryfactory.com>")
-              (Cc "Philipp Moeller <philipp.moeller@geometryfactory.com>")
               )
              (".*gmail.*"
               (name "Philipp Moeller")
               (signature "Philipp")
               (From "Philipp Moeller <bootsarehax@gmail.com>")
-              (Cc "Philipp Moeller <bootsarehax@gmail.com>")
               )))
 
 
@@ -258,7 +256,7 @@
   (setq send-from (message-fetch-field "from"))
   (message "Sending from %s" send-from)
   (cond 
-   ((equal send-from "Philipp Moeller <boostarehax@gmail.com>")
+   ((equal send-from "Philipp Moeller <bootsarehax@gmail.com>")
     (setq smtpmail-smtp-server "smtp.gmail.com")
     (setq smtpmail-smtp-service 587)
     (setq smtpmail-smtp-user "bootsarehax@gmail.com")
