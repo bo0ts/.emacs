@@ -151,6 +151,10 @@
 (setq auto-mode-alist
       (cons '("\\.txt" . markdown-mode) auto-mode-alist))
 
+;; Hacky, but solid for ArchLinux.
+(setq markdown-command "perl /usr/bin/vendor_perl/Markdown.pl")
+
+
 ;;
 ;; expand-region
 ;;
