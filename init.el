@@ -97,7 +97,7 @@
 
 (let ((default-directory  "~/.emacs.d/"))
   (normal-top-level-add-to-load-path 
-   '("codepad" "keyfreq" "mediawiki" "expand-region.el" "magit")))
+   '("codepad" "mediawiki")))
 
 (setq user-mail-address "philipp.moeller@geometryfactory.com")
 
