@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
  '(calendar-week-start-day 1)
- '(custom-safe-themes (quote ("71b172ea4aad108801421cc5251edb6c792f3adbaecfa1c52e94e3d99634dee7" default)))
+ '(custom-safe-themes (quote ("bf9d5728e674bde6a112979bd830cc90327850aaaf2e6f3cc4654f077146b406" "71b172ea4aad108801421cc5251edb6c792f3adbaecfa1c52e94e3d99634dee7" default)))
  '(doxymacs-blank-multiline-comment-template (quote (> "///" n > "/// " n > "///")))
  '(doxymacs-doxygen-style "JavaDoc")
  '(erc-modules (quote (autojoin button completion fill irccontrols keep-place list match menu move-to-prompt netsplit networks noncommands readonly ring stamp spelling track)))
@@ -141,6 +141,12 @@
 (global-set-key "\M-\C-g" 'magit-status)
 
 ;;
+;; ibuffer
+;;
+
+(global-set-key "\C-x\C-b" 'ibuffer)
+
+;;
 ;; markdown-mode
 ;; 
 
@@ -215,7 +221,7 @@
       gnus-startup-file "~/newsrc"
       gnus-use-dribble-file nil
       ;; speed killer
-      gnus-fetch-old-headers nil
+      gnus-fetch-old-headers t
       gnus-agent nil
       nnimap-inbox "INBOX"
       gnus-use-full-window nil)
@@ -261,15 +267,9 @@
   (message "Sending from %s" send-from)
   (cond 
    ((equal send-from "Philipp Moeller <bootsarehax@gmail.com>")
-    (setq message-send-mail-function 'smtpmail-send-it
-          smtpmail-starttls-credentials '(("smtp.gmail.com" 465 nil nil))
-          smtpmail-auth-credentials '(("smtp.gmail.com" 465 "bootsarehax@gmail.com" nil))
-          smtpmail-smtp-server "smtp.gmail.com"
-          smtpmail-smtp-service 465
-          ;; smtpmail-debug-verb t
-          ;; smtpmail-debug-info t
-          smtpmail-local-domain nil
-          smtpmail-stream-type 'ssl)
+    (setq smtpmail-smtp-server "smtp.gmail.com"
+          smtpmail-smtp-service 587
+          smtpmail-smtp-user "bootsarehax@gmail.com")
     )
    ((equal send-from "Philipp Moeller <philipp.moeller@geometryfactory.com>")
     (setq smtpmail-smtp-server "ssl0.ovh.net")
