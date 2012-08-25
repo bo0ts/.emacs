@@ -6,7 +6,6 @@
  '(auth-source-save-behavior nil)
  '(calendar-week-start-day 1)
  '(custom-safe-themes (quote ("bf9d5728e674bde6a112979bd830cc90327850aaaf2e6f3cc4654f077146b406" "71b172ea4aad108801421cc5251edb6c792f3adbaecfa1c52e94e3d99634dee7" default)))
- '(doxymacs-blank-multiline-comment-template (quote (> "///" n > "/// " n > "///")))
  '(doxymacs-doxygen-style "JavaDoc")
  '(erc-modules (quote (autojoin button completion fill irccontrols keep-place list match menu move-to-prompt netsplit networks noncommands readonly ring stamp spelling track)))
  '(erc-nickserv-identify-mode (quote nick-change))
