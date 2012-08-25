@@ -139,6 +139,9 @@
 (require 'magit)
 (global-set-key "\M-\C-g" 'magit-status)
 
+(require 'gist)
+(setq gist-view-gist t)
+
 ;;
 ;; ibuffer
 ;;
