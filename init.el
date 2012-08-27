@@ -149,6 +149,12 @@
 (global-set-key "\C-x\C-b" 'ibuffer)
 
 ;;
+;; footnote
+;;
+
+(setq footnote-spaced-footnotes nil)
+
+;;
 ;; markdown-mode
 ;; 
 
