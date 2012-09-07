@@ -67,26 +67,15 @@
              '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 (package-initialize)
-(require 'cl)
+;; install packages this config requires
 
-(defvar my-packages
-  '(autopair dired+ expand-region haskell-mode keyfreq zenburn-theme magit))
-
-;; (defun my-packages-installed-p ()
-;;   (loop for p in my-packages
-;;         do (message "%s %s" (package-installed-p p) p)))
-;; (package-installed-p 'keyfreq)
-
-;; (defun my-install-packages ()
-;;   (unless (my-packages-installed-p)
-;;     ;; check for new packages (package versions)
-;;     (message "%s" "Refreshing package database...")
-;;     (package-refresh-contents)
-;;     (message "%s" " done.")
-;;     ;; install the missing packages
-;;     (dolist (p my-packages)
-;;       (unless (package-installed-p p)
-;;         (package-install p)))))
+(mapc
+ (lambda (package)
+   (or (package-installed-p package)
+       (if (y-or-n-p (format "Package %s is missing. Install it? " package)) 
+           (package-install package))))
+ '(autopair cmake-mode dired+ expand-region gist haskell-mode 
+            keyfreq magit markdown-mode yasnippet zenburn-theme))
 
 ;;
 ;; setup
