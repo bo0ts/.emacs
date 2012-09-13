@@ -252,6 +252,8 @@
         ("gsoc"                  "^Subject:.*\\[GSoC Mentors\\]")
         ("gsoc"                  "^Subject:.*\\[gsoc-cgal\\]")
         ("cgal-commits"          "^From:.*cgal-commits-request")
+        ("arch-dev-public"       "^From:.*arch-dev-public-request")
+        ("c3le"                  "^Subject:.*\\[c3le\\]")
         ("[Google Mail]/Bin"     "^From:.*eBay.*")
         ))
 (setq nnimap-split-methods nnmail-split-methods)
