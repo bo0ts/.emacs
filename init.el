@@ -474,9 +474,32 @@
 (bbdb-initialize 'gnus 'message)
 (bbdb-insinuate-message)
 (setq bbdb-file "~/org/bbdb"
-      bbdb-complete-mail-allow-cycling t)
+      bbdb-complete-mail-allow-cycling t
+      bbdb-phone-style nil
+      org-bbdb-anniversary-field 'birthday)
+
+(defalias 'bbdb-company 'bbdb-search-organization)
+(defalias 'bbdb-name 'bbdb-search-name)
+
+(defun bbdb-record-getprop (record label)
+  (and (eq label 'company)
+       (setq label 'organization))
+  (if (memq label '(name degree organization address phone mail aka))
+      (funcall
+       (intern
+        (concat "bbdb-record-" (symbol-name label)))
+       record)
+    (bbdb-record-note record label)))
+
+(defadvice bbdb-split (around my-bbdb-split activate)
+  (when (or (string= string "\n") (string= string "-"))
+    (let ((sep string))
+      (setq string separator
+            separator sep)
+      ad-do-it)))
 
 (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+
 
 ;;
 ;; ispell dictionaries and flyspell
