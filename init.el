@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
  '(calendar-week-start-day 1)
- '(custom-safe-themes (quote ("bf9d5728e674bde6a112979bd830cc90327850aaaf2e6f3cc4654f077146b406" "71b172ea4aad108801421cc5251edb6c792f3adbaecfa1c52e94e3d99634dee7" default)))
+ '(custom-safe-themes (quote ("e1b2af501dbee3c915fe3940defe66952044f795e47821ff5796054024596408" "7cd5b0111f13d54f72946ca9f4d8e0bc488f305308d6faa6f165fba138e21247" "08cb00e329be5e3186826ae7e1a84cf526fe2a2784c048c8ae8d5023877ccbe5" "bf9d5728e674bde6a112979bd830cc90327850aaaf2e6f3cc4654f077146b406" "71b172ea4aad108801421cc5251edb6c792f3adbaecfa1c52e94e3d99634dee7" default)))
  '(doxymacs-doxygen-style "JavaDoc")
  '(erc-modules (quote (autojoin button completion fill irccontrols keep-place list match menu move-to-prompt netsplit networks noncommands readonly ring stamp spelling track)))
  '(erc-nickserv-identify-mode (quote nick-change))
@@ -469,14 +469,12 @@
 ;; bbdb
 ;;
 
+(require 'bbdb)
 (require 'bbdb-loaddefs)
-(require 'bbdb-gnus)
-(bbdb-initialize 'gnus 'message)
-(bbdb-insinuate-message)
-(setq bbdb-file "~/org/bbdb"
+(setq bbdb-file "~/org/bbdb" 
       bbdb-complete-mail-allow-cycling t)
-
-(add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+(bbdb-initialize 'gnus 'message)
+(bbdb-mua-auto-update-init 'gnus 'message)
 
 ;;
 ;; ispell dictionaries and flyspell
