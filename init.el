@@ -474,6 +474,7 @@
 (setq bbdb-file "~/org/bbdb" 
       bbdb-complete-mail-allow-cycling t
       bbdb-phone-style nil
+      bbdb-message-pop-up nil
       org-bbdb-anniversary-field 'birthday)
 
 (bbdb-initialize 'gnus 'message)
