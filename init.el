@@ -108,13 +108,6 @@
 (load-theme 'zenburn)
 (global-hl-line-mode 1)
 
-
-;;
-;; store bookmarks along with org notes
-;;
-
-(setq bookmark-file "~/org/bookmarks.bmk")
-
 ;;
 ;; dired-plus
 ;; 
