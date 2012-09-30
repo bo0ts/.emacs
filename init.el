@@ -190,7 +190,6 @@
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key [f6] 'recompile)
-(global-set-key [f5] 'gnus)
 
 
 ;;
@@ -203,6 +202,8 @@
 ;; gnus
 ;; 
 
+(global-set-key [f5] 'gnus)
+
 (setq gnus-init-file "~/.emacs.d/gnus/gnus.el"
       gnus-save-newsrc-file nil
       gnus-read-newsrc-file nil
@@ -214,7 +215,8 @@
       gnus-fetch-old-headers t
       gnus-agent nil
       nnimap-inbox "INBOX"
-      gnus-use-full-window nil)
+      gnus-use-full-window nil
+      gnutls-min-prime-bits 512)
 
 (add-hook 'message-mode-hook 'footnote-mode)
 (setq gnus-posting-styles
@@ -231,7 +233,6 @@
               (signature "Philipp")
               (From "Philipp Moeller <bootsarehax@gmail.com>")
               )))
-
 
 (setq nnmail-split-methods 
       '(("cgal-develop"          "^Subject:.*\\[cgal-develop\\]")
