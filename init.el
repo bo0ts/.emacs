@@ -209,6 +209,7 @@
       gnus-read-newsrc-file nil
       gnus-directory "~/News/"
       message-directory "~/Mail/"
+      message-elide-ellipsis "\n[...snipped...]\n\n"
       gnus-startup-file "~/newsrc"
       gnus-use-dribble-file nil
       ;; speed killer
