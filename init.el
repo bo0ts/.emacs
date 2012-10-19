@@ -217,7 +217,11 @@
       gnus-agent nil
       nnimap-inbox "INBOX"
       gnus-use-full-window nil
-      gnutls-min-prime-bits 512)
+      gnutls-min-prime-bits 512
+      ;; fancy-summaries
+      gnus-treat-mail-gravatar t
+      gnus-treat-from-gravatar t)
+
 
 (add-hook 'message-mode-hook 'footnote-mode)
 (setq gnus-posting-styles
