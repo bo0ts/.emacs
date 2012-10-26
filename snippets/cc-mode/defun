@@ -1,4 +1,5 @@
 #name: void func(Args...) { }
+#key: defun
 # --
 ${1:void} ${2:func}(${3:Args...})
 {

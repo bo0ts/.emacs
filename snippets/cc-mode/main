@@ -1,4 +1,5 @@
 #name: int main() { ... }
+#key: main
 # --
 int main()
 {

@@ -219,8 +219,9 @@
       gnus-use-full-window nil
       gnutls-min-prime-bits 512
       ;; fancy-summaries
-      gnus-treat-mail-gravatar t
-      gnus-treat-from-gravatar t)
+      gnus-treat-mail-gravatar 'head
+      gnus-treat-from-gravatar 'head)
+
 
 
 (add-hook 'message-mode-hook 'footnote-mode)
@@ -374,13 +375,12 @@
 ;; yasnippets
 ;;
 
-(require 'yasnippet) ;; not yasnippet-bundle
-(yas/global-mode 1)
-(setq yas/snippet-dirs "~/.emacs.d/snippets/")
+(require 'yasnippet)
+(yas-global-mode 1)
+(setq yas-load-directory "~/.emacs.d/snippets/")
 
 (require 'dropdown-list)
-(setq yas/prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))
-
+(setq yas-prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))
 
 
 ;;
