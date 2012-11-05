@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
  '(calendar-week-start-day 1)
- '(custom-safe-themes (quote ("78b1c94c1298bbe80ae7f49286e720be25665dca4b89aea16c60dacccfbb0bca" "e1b2af501dbee3c915fe3940defe66952044f795e47821ff5796054024596408" "7cd5b0111f13d54f72946ca9f4d8e0bc488f305308d6faa6f165fba138e21247" "08cb00e329be5e3186826ae7e1a84cf526fe2a2784c048c8ae8d5023877ccbe5" "bf9d5728e674bde6a112979bd830cc90327850aaaf2e6f3cc4654f077146b406" "71b172ea4aad108801421cc5251edb6c792f3adbaecfa1c52e94e3d99634dee7" default)))
+ '(custom-safe-themes (quote ("be7eadb2971d1057396c20e2eebaa08ec4bfd1efe9382c12917c6fe24352b7c1" "78b1c94c1298bbe80ae7f49286e720be25665dca4b89aea16c60dacccfbb0bca" "e1b2af501dbee3c915fe3940defe66952044f795e47821ff5796054024596408" "7cd5b0111f13d54f72946ca9f4d8e0bc488f305308d6faa6f165fba138e21247" "08cb00e329be5e3186826ae7e1a84cf526fe2a2784c048c8ae8d5023877ccbe5" "bf9d5728e674bde6a112979bd830cc90327850aaaf2e6f3cc4654f077146b406" "71b172ea4aad108801421cc5251edb6c792f3adbaecfa1c52e94e3d99634dee7" default)))
  '(doxymacs-doxygen-style "JavaDoc")
  '(erc-modules (quote (autojoin button completion fill irccontrols keep-place list match menu move-to-prompt netsplit networks noncommands readonly ring stamp spelling track)))
  '(erc-nickserv-identify-mode (quote nick-change))
@@ -19,12 +19,9 @@
  '(mediawiki-site-alist (quote (("Wikipedia" "http://en.wikipedia.org/w/" "username" "password" "Main Page") ("CGAL" "https://cgal.geometryfactory.com/CGAL/Members/w/" "Pmoeller" "" "Main Page"))))
  '(org-agenda-files (quote ("~/org/notes.org")))
  '(org-archive-location "~/org/archive.org::From %s")
- '(org-capture-templates (quote (("l" "Link" entry (file+headline "~/org/notes.org" "Links") "* TODO %(get-page-title (current-kill 0))" :immediate-finish t) 
-                                 ("m" "Movie" entry (file "~/org/movies.org") "* TODO [[%(current-kill 0)][%^{prompt}]]" :prepent t)
-                                 ("t" "Task" entry (file+headline "~/org/notes.org" "Tasks") "* TODO %?
+ '(org-capture-templates (quote (("l" "Link" entry (file+headline "~/org/notes.org" "Links") "* TODO %(get-page-title (current-kill 0))" :immediate-finish t) ("m" "Movie" entry (file "~/org/movies.org") "* TODO [[%(current-kill 0)][%^{prompt}]]" :prepent t) ("t" "Task" entry (file+headline "~/org/notes.org" "Tasks") "* TODO %?
   %u
-  %a" :prepend t)
-                                 ("p" "Paper" entry (file+headline "~/org/notes.org" "Papers") "* %A %^g"))))
+  %a" :prepend t) ("p" "Paper" entry (file+headline "~/org/notes.org" "Papers") "* %A %^g"))))
  '(org-export-latex-classes (quote (("article" "\\documentclass[12pt]{article}" ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}") ("\\paragraph{%s}" . "\\paragraph*{%s}") ("\\subparagraph{%s}" . "\\subparagraph*{%s}")) ("report" "\\documentclass[11pt]{report}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("book" "\\documentclass[11pt]{book}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("beamer" "\\documentclass{beamer}" org-beamer-sectioning))))
  '(org-modules (quote (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-habit org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m)))
  '(org-time-stamp-rounding-minutes (quote (0 15)))
@@ -436,19 +433,11 @@
 (setq org-directory "~/org")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
-(setq org-agenda-custom-commands '(("h" "Daily habits" ((agenda ""))
-                                    ((org-agenda-show-log t) (org-agenda-ndays 7)
-                                     (org-agenda-log-mode-items '(state))
-                                     (org-agenda-skip-function '(org-agenda-skip-entry-if
-                                                                 'notregexp ":DAILY:"))
-                                     ))
-                                   ("d" "Weekly CGAL report" 
-                                    ((agenda "" ((org-agenda-span 'week)
-                                                 (org-agenda-show-log t)
-                                                 (org-agenda-filter-preset '("+cgal"))
-                                                 (org-agenda-log-mode-items '(closed))))
-                                     ))
-                                   ))
+(setq org-file-apps '((auto-mode . emacs)
+                      ("\\.mm\\'" . default)
+                      ("\\.x?html?\\'" . default)
+                      ("\\.pdf\\'" . "xpdf %s")))
+
 (defun get-page-title (url)
   "Try to get the title of the html page given by url. This is seriously broken. setq etc."
   (interactive)
