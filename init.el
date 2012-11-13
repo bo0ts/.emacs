@@ -75,7 +75,7 @@
        (if (y-or-n-p (format "Package %s is missing. Install it? " package)) 
            (package-install package))))
  '(autopair cmake-mode dired+ expand-region gist haskell-mode 
-            keyfreq magit markdown-mode yasnippet zenburn-theme))
+            keyfreq magit markdown-mode yasnippet zenburn-theme browse-kill-ring))
 
 ;;
 ;; setup
@@ -107,6 +107,13 @@
 (fringe-mode 0)
 (load-theme 'zenburn)
 (global-hl-line-mode 1)
+
+;;
+;; browse-kill-ring
+;;
+
+(require 'browse-kill-ring)
+(global-set-key "\C-cy" 'browse-kill-ring)
 
 ;;
 ;; dired-plus
@@ -382,6 +389,22 @@
 (require 'dropdown-list)
 (setq yas-prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))
 
+;;
+;; trivial-mode
+;;
+
+(defun define-trivial-mode (mode-prefix file-regexp &optional command)
+  (or command (setq command mode-prefix))
+  (let ((mode-command (intern (concat mode-prefix "-mode"))))
+    (fset mode-command
+          `(lambda ()
+             (interactive)
+             (start-process ,mode-prefix (current-buffer)
+                            ,command (buffer-file-name))))
+    (add-to-list 'auto-mode-alist (cons file-regexp mode-command))))
+
+(define-trivial-mode "xpdf" "\\.pdf$")
+(define-trivial-mode "gv" "\\.ps$")
 
 ;;
 ;; org-mode
