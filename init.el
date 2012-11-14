@@ -251,6 +251,7 @@
       '(("cgal-develop"          "^Subject:.*\\[cgal-develop\\]")
         ("cgal-discuss"          "^Subject:.*\\[cgal-discuss\\]")
         ("cgal-bindings-discuss" "^Subject:.*\\[cgal-bindings-discuss\\]")
+        ("cgal-commits"          "^From:.*git@scm.cgal.org")
         ("couchsurfing"          "^From:.*CouchSurfing")
         ("bbdb"                  "^To:.*bbdb-info@lists.sourceforge.net")
         ("bbdb"                  "^Cc:.*bbdb-info@lists.sourceforge.net")
