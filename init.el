@@ -251,7 +251,8 @@
       '(("cgal-develop"          "^Subject:.*\\[cgal-develop\\]")
         ("cgal-discuss"          "^Subject:.*\\[cgal-discuss\\]")
         ("cgal-bindings-discuss" "^Subject:.*\\[cgal-bindings-discuss\\]")
-        ("cgal-commits"          "^From:.*git@scm.cgal.org")
+        ("cgal-commits"          "^From:.*\\[cgal\\.git\\]")
+        ("cgal-commits"          "^Subject:.*git@scm.cgal.org")
         ("couchsurfing"          "^From:.*CouchSurfing")
         ("bbdb"                  "^To:.*bbdb-info@lists.sourceforge.net")
         ("bbdb"                  "^Cc:.*bbdb-info@lists.sourceforge.net")
@@ -462,6 +463,11 @@
                       ("\\.x?html?\\'" . default)
                       ("\\.pdf\\'" . "xpdf %s")))
 
+(setq org-completion-use-ido t)
+;; refile at least two levels
+(setq org-refile-targets '((nil . (:level . 2))))
+
+
 (defun get-page-title (url)
   "Try to get the title of the html page given by url. This is seriously broken. setq etc."
   (interactive)
@@ -526,3 +532,4 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
