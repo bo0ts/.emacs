@@ -75,7 +75,7 @@
        (if (y-or-n-p (format "Package %s is missing. Install it? " package)) 
            (package-install package))))
  '(autopair cmake-mode dired+ expand-region gist haskell-mode 
-            keyfreq magit markdown-mode yasnippet zenburn-theme browse-kill-ring))
+            keyfreq magit markdown-mode yasnippet zenburn-theme browse-kill-ring smex))
 
 ;;
 ;; setup
@@ -204,6 +204,18 @@
 ;;
 
 (ido-mode 1)
+
+
+;;
+;; smex
+;; 
+
+(require 'smex)
+(smex-initialize)
+(global-set-key "\M-x" 'smex)
+(global-set-key "\M-X" 'smex-major-mode-commands)
+(global-set-key "\C-c\C-c\M-x" 'execute-extended-command)
+(setq smex-key-advice-ignore-menu-bar t)
 
 ;;
 ;; gnus
