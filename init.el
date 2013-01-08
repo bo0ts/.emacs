@@ -19,7 +19,8 @@
  '(mediawiki-site-alist (quote (("Wikipedia" "http://en.wikipedia.org/w/" "username" "password" "Main Page") ("CGAL" "https://cgal.geometryfactory.com/CGAL/Members/w/" "Pmoeller" "" "Main Page"))))
  '(org-agenda-files (quote ("~/org/notes.org")))
  '(org-archive-location "~/org/archive.org::From %s")
- '(org-capture-templates (quote (("l" "Link" entry (file+headline "~/org/notes.org" "Links") "* TODO %(get-page-title (current-kill 0))" :immediate-finish t) ("m" "Movie" entry (file "~/org/movies.org") "* TODO [[%(current-kill 0)][%^{prompt}]]" :prepent t) ("t" "Task" entry (file+headline "~/org/notes.org" "Tasks") "* TODO %?
+ '(org-capture-templates (quote (("l" "Link" entry (file+headline "~/org/notes.org" "Links") "* TODO %(get-page-title (current-kill 0))" :immediate-finish t) 
+                                 ("m" "Movie" entry (file "~/org/movies.org") "%(call-interactively movie-as-org)" :prepent t) ("t" "Task" entry (file+headline "~/org/notes.org" "Tasks") "* TODO %?
   %u
   %a" :prepend t) ("p" "Paper" entry (file+headline "~/org/notes.org" "Papers") "* %A %^g"))))
  '(org-export-latex-classes (quote (("article" "\\documentclass[12pt]{article}" ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}") ("\\paragraph{%s}" . "\\paragraph*{%s}") ("\\subparagraph{%s}" . "\\subparagraph*{%s}")) ("report" "\\documentclass[11pt]{report}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("book" "\\documentclass[11pt]{book}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("beamer" "\\documentclass{beamer}" org-beamer-sectioning))))
@@ -107,6 +108,24 @@
 (fringe-mode 0)
 (load-theme 'zenburn)
 (global-hl-line-mode 1)
+
+;;
+;; mpd-pls-handler control
+;;
+
+(defvar streaming-directory "~/music/stream")
+
+(defun radio ()
+  (interactive)
+  ;; strip to the filenames and then expand to the full name again
+  (let* ((files (directory-files streaming-directory t "\\.pls$\\|\\.asx$"))
+         (filename (ido-completing-read 
+                    "which radio?: "
+                    (mapcar (lambda (full) (file-name-nondirectory full)) files)))
+         (actualfile (find-if (lambda (fullname) (string= (file-name-nondirectory fullname) filename)) files)))
+    (message (concat "mpd-pls-handler.sh " actualfile))
+    (shell-command (concat "mpd-pls-handler.sh " (shell-quote-argument actualfile)))
+    (message (concat "Playing " filename))))
 
 ;;
 ;; browse-kill-ring
@@ -381,6 +400,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.glsl$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
+
 
 ;;
 ;; cmake-mode
