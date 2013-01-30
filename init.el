@@ -445,7 +445,6 @@
 ;; org-mode
 ;;
 
-(require 'org-install)
 (require 'org-protocol)
 (require 'org-publish)
 (require 'org-exp-bibtex)
