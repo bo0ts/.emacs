@@ -22,7 +22,6 @@
  '(org-capture-templates (quote (("l" "Link" entry (file+headline "~/org/notes.org" "Links") "* TODO %(get-page-title (current-kill 0))" :immediate-finish t) ("m" "Movie" entry (file "~/org/movies.org") "%(call-interactively movie-as-org)" :prepent t) ("t" "Task" entry (file+headline "~/org/notes.org" "Tasks") "* TODO %?
   %u
   %a" :prepend t) ("p" "Paper" entry (file+headline "~/org/notes.org" "Papers") "* %A %^g"))))
- '(org-export-latex-classes (quote (("article" "\\documentclass[12pt]{article}" ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}") ("\\paragraph{%s}" . "\\paragraph*{%s}") ("\\subparagraph{%s}" . "\\subparagraph*{%s}")) ("report" "\\documentclass[11pt]{report}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("book" "\\documentclass[11pt]{book}" ("\\part{%s}" . "\\part*{%s}") ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}")) ("beamer" "\\documentclass{beamer}" org-beamer-sectioning))))
  '(org-time-stamp-rounding-minutes (quote (0 15)))
  '(package-user-dir "~/elpa")
  '(savehist-file "~/.em_hist")
@@ -358,7 +357,7 @@
 (add-hook 'TeX-mode-hook
           (lambda ()
             (set (make-local-variable 'compile-command)
-                 (concat "pdflatex -interaction nonstopmode -file-line-error "
+                 (concat "pdflatex -interaction nonstopmode -file-line-error -output-directory=/tmp "
                          (buffer-name)))))
 
 ;;
@@ -443,9 +442,13 @@
 ;; org-mode
 ;;
 
-(require 'org-install)
-(require 'french-holidays)
-(setq calendar-holidays holiday-french-holidays)
+;; (require 'french-holidays)
+;; (setq calendar-holidays holiday-french-holidays)
+
+(require 'german-holidays)
+(setq calendar-holidays holiday-german-holidays)
+
+(setq org-html-head-include-default-style nil)
 
 (setq org-publish-project-alist
       '(
@@ -458,9 +461,6 @@
          :publishing-directory "~/public_html/"
          :auto-preamble t
          :html-postamble nil
-         :auto-sitemap t
-         :sitemap-filename "sitemap.org"
-         :sitemap-title "Sitemap"
          :publishing-function org-html-publish-to-html
          )
         ;; static files like images  and static html as well
@@ -493,6 +493,13 @@
 ;; refile at least two levels
 (setq org-refile-targets '((nil . (:level . 2))))
 
+(require 'ox-latex)
+(add-to-list 'org-latex-classes
+             '("beamer"
+               "\\documentclass\[presentation\]\{beamer\}"
+               ("\\section\{%s\}" . "\\section*\{%s\}")
+               ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
+               ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
 
 (defun get-page-title (url)
   "Try to get the title of the html page given by url. This is seriously broken. setq etc."
