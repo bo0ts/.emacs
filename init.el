@@ -545,8 +545,9 @@
 (add-hook 'c++-mode-hook 'flyspell-prog-mode)
 (add-hook 'lisp-mode-hook 'flyspell-prog-mode)
 (add-hook 'c-mode-hook 'flyspell-prog-mode)
+(add-hook 'cmake-mode-hook 'flyspell-prog-mode)
 
-(defun fd-switch-dictionary()
+(defun switch-dictionary()
   (interactive)
   (let* ((dic ispell-current-dictionary)
     	 (change (if (string= dic "deutsch8") "english" "deutsch8")))
@@ -554,9 +555,11 @@
     (message "Dictionary switched from %s to %s" dic change)
     ))
 
-(global-set-key (kbd "<f8>")   'fd-switch-dictionary)
+(global-set-key (kbd "<f8>") 'switch-dictionary)
 
-(setq skeleton-pair nil)
+(defun yank-file-name ()
+ (interactive)
+ (kill-new (buffer-file-name)))
 
 ;;
 ;; emacs disabled
