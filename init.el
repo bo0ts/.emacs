@@ -90,7 +90,7 @@
 ;; ask briefly
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(server-start)
+;; (server-start)
 
 ;; don't make backups. i have version control for a reason.
 (setq make-backup-files nil)
@@ -165,10 +165,8 @@
 
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
-(setq auto-mode-alist
-      (cons '("\\.text" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist
-      (cons '("\\.txt" . markdown-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.text" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.txt" . markdown-mode))
 
 ;; Hacky, but solid for ArchLinux.
 (setq markdown-command "perl /usr/bin/vendor_perl/Markdown.pl")
@@ -364,8 +362,8 @@
 ;; haskell-related
 ;;
 
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-ghci)
+(add-hook 'haskell-mode-hook 'haskell-indent)
+;; (add-hook 'haskell-mode-hook 'turn-on-haskell-ghci)
 
 ;;
 ;; c++
@@ -404,10 +402,8 @@
 ;;
 
 (require 'cmake-mode)
-(setq auto-mode-alist
-      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-                ("\\.cmake\\'" . cmake-mode))
-              auto-mode-alist))
+(add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
+(add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
 
 
 ;; 
@@ -416,7 +412,7 @@
 
 (require 'yasnippet)
 (yas-global-mode 1)
-(setq yas-load-directory "~/.emacs.d/snippets/")
+(setq yas-snippet-dirs '("~/.emacs.d/snippets" "/home/boots/prog/yasnippet-snippets"))
 
 (require 'dropdown-list)
 (setq yas-prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))
@@ -560,6 +556,11 @@
 (defun yank-file-name ()
  (interactive)
  (kill-new (buffer-file-name)))
+
+;;
+;; flycheck
+
+(setq flycheck-clang-language-standard "c++11")
 
 ;;
 ;; emacs disabled
