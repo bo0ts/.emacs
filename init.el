@@ -83,7 +83,7 @@
 
 (let ((default-directory  "~/.emacs.d/"))
   (normal-top-level-add-to-load-path 
-   '("codepad" "mediawiki")))
+   '("mediawiki")))
 
 (setq user-mail-address "philipp.moeller@geometryfactory.com")
 
@@ -186,7 +186,6 @@
 
 (require 'mediawiki)
 (require 'grep-edit)
-(require 'codepad)
 (show-paren-mode 1)
 (add-to-list 'auto-mode-alist '("\\.pro$" . make-mode))
 
