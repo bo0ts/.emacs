@@ -80,11 +80,6 @@
 ;;
 
 (add-to-list 'load-path "~/.emacs.d")
-
-(let ((default-directory  "~/.emacs.d/"))
-  (normal-top-level-add-to-load-path 
-   '("mediawiki")))
-
 (setq user-mail-address "philipp.moeller@geometryfactory.com")
 
 ;; ask briefly
@@ -184,7 +179,6 @@
 ;; own section
 ;;
 
-(require 'mediawiki)
 (require 'grep-edit)
 (show-paren-mode 1)
 (add-to-list 'auto-mode-alist '("\\.pro$" . make-mode))

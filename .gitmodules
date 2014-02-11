@@ -1,3 +1,0 @@
-[submodule "mediawiki"]
-	path = mediawiki
-	url = https://github.com/tangyi/mediawiki-el.git
