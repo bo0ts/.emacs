@@ -1,3 +1,0 @@
-#name : BOOST_CHECK_EQUAL(val, val);
-# --
-BOOST_CHECK_EQUAL(${1:val1}, ${2:val2});

@@ -1,6 +1,0 @@
-#name : for(boost::tie(...)) { ... }
-# --
-${1:iterator} ${2:itb}, ${3:ite};
-for(boost::tie($2, $3) = ${4:get}(${5:obj}); $2 != $3; ++$2) {
-  $6
-}

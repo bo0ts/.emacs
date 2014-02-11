@@ -1,3 +1,0 @@
-#name : std::cerr << ... << std::endl;
-# --
-std::cerr << ${1:var} << std::endl;

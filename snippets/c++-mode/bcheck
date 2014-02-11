@@ -1,3 +1,0 @@
-#name : BOOST_CHECK(condition);
-# --
-BOOST_CHECK(${1:condition});

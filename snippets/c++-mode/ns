@@ -1,6 +1,0 @@
-#name : namespace ...
-#key: ns
-# --
-namespace ${1:NS} {
-  $0
-} // $1
