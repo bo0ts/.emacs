@@ -438,9 +438,6 @@
 ;; org-mode
 ;;
 
-;; (require 'french-holidays)
-;; (setq calendar-holidays holiday-french-holidays)
-
 (require 'german-holidays)
 (setq calendar-holidays holiday-german-holidays)
 
