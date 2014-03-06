@@ -29,6 +29,7 @@
                                               (nnimap-stream ssl)
                                               (nnir-search-engine imap))
                                       (nntp "news.gwene.org")
+                                      (nntp "news.gmane.org")
                                       ))
 ;; (add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
 
