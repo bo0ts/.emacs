@@ -79,7 +79,7 @@
 ;; setup
 ;;
 
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (setq user-mail-address "philipp.moeller@geometryfactory.com")
 
 ;; ask briefly
