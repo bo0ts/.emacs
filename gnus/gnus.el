@@ -31,7 +31,6 @@
                                       (nntp "news.gwene.org")
                                       (nntp "news.gmane.org")
                                       ))
-;; (add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
 
 ;; html mails
 (require 'w3m)
