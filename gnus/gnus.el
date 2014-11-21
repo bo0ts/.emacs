@@ -23,11 +23,6 @@
                                               (nnimap-server-port 993)
                                               (nnimap-stream ssl)
                                               (nnir-search-engine imap))
-                                      (nnimap "geometry"
-                                              (nnimap-address "ssl0.ovh.net")
-                                              (nnimap-server-port 993)
-                                              (nnimap-stream ssl)
-                                              (nnir-search-engine imap))
                                       (nntp "news.gwene.org")
                                       (nntp "news.gmane.org")
                                       ))
