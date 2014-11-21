@@ -203,6 +203,8 @@
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
+(global-set-key [f1] 'eshell)
+(global-set-key [f2] 'rgrep)
 (global-set-key [f6] 'recompile)
 
 
