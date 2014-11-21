@@ -266,6 +266,11 @@
               (name "Philipp Moeller")
               (signature "Philipp")
               (From "Philipp Moeller <bootsarehax@gmail.com>")
+              )
+             (".*gmane.*"
+              (name "Philipp Moeller")
+              (signature "Philipp")
+              (From "Philipp Moeller <bootsarehax@gmail.com>")
               )))
 
 (setq nnmail-split-methods 
