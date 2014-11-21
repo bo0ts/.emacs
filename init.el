@@ -296,15 +296,10 @@
   (setq send-from (message-fetch-field "from"))
   (message "Sending from %s" send-from)
   (cond 
-   ((equal send-from "Philipp Moeller <bootsarehax@gmail.com>")
+   ((string-match "<bootsarehax@gmail\.com>" send-from)
     (setq smtpmail-smtp-server "smtp.gmail.com"
           smtpmail-smtp-service 587
           smtpmail-smtp-user "bootsarehax@gmail.com")
-    )
-   ((equal send-from "Philipp Moeller <philipp.moeller@geometryfactory.com>")
-    (setq smtpmail-smtp-server "ssl0.ovh.net")
-    (setq smtpmail-smtp-service 587)
-    (setq smtpmail-smtp-user "philipp.moeller@geometryfactory.com")
     )
    (t
     (error "No such server known"))
