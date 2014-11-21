@@ -339,9 +339,6 @@
 (setq TeX-parse-self t)
 (setq require-final-newline nil)
 
-(load "auctex.el" nil t t)
-(load "preview-latex.el" nil t t)
-
 (add-hook 'TeX-mode-hook
           (lambda ()
             (set (make-local-variable 'compile-command)
