@@ -337,7 +337,6 @@
 
 (setq TeX-auto-save nil)
 (setq TeX-parse-self t)
-(setq require-final-newline nil)
 
 (add-hook 'TeX-mode-hook
           (lambda ()
