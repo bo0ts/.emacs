@@ -16,12 +16,24 @@
  '(image-dired-dir "~/.image-dired/")
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(mediawiki-site-alist (quote (("Wikipedia" "http://en.wikipedia.org/w/" "username" "password" "Main Page") ("CGAL" "https://cgal.geometryfactory.com/CGAL/Members/w/" "Pmoeller" "" "Main Page"))))
  '(org-agenda-files (quote ("~/org/notes.org")))
  '(org-archive-location "~/org/archive.org::From %s")
- '(org-capture-templates (quote (("l" "Link" entry (file+headline "~/org/notes.org" "Links") "* TODO %(get-page-title (current-kill 0))" :immediate-finish t) ("m" "Movie" entry (file "~/org/movies.org") "%(call-interactively movie-as-org)" :prepent t) ("t" "Task" entry (file+headline "~/org/notes.org" "Tasks") "* TODO %?
+ '(org-capture-templates
+   (quote
+    (("l" "Link" entry
+      (file+headline "~/org/notes.org" "Links")
+      "* TODO %(get-page-title (current-kill 0))" :immediate-finish t)
+     ("m" "Movie" entry
+      (file "~/org/movies.org")
+      "%(call-interactively movie-as-org)" :prepent t)
+     ("t" "Task" entry
+      (file+headline "~/org/notes.org" "Tasks")
+      "* TODO %?
   %u
-  %a" :prepend t) ("p" "Paper" entry (file+headline "~/org/notes.org" "Papers") "* %A %^g"))))
+  %a" :prepend t)
+     ("p" "Paper" entry
+      (file+headline "~/org/notes.org" "Papers")
+      "* %A %^g"))))
  '(org-time-stamp-rounding-minutes (quote (0 15)))
  '(package-user-dir "~/elpa")
  '(savehist-file "~/.em_hist")
