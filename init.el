@@ -532,7 +532,7 @@
       bbdb-message-pop-up nil
       org-bbdb-anniversary-field 'birthday)
 
-(bbdb-initialize 'gnus 'message)
+(bbdb-initialize 'gnus 'message 'anniv 'pgp)
 (bbdb-mua-auto-update-init 'gnus 'message)
 
 ;;
