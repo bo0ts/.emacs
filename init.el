@@ -85,6 +85,23 @@
 ;; ask briefly
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+
+;;
+;; hack browse-url-firefox
+;;
+(require 'browse-url)
+(defun browse-url-firefox (url &optional new-window)
+  (interactive (browse-url-interactive-arg "URL: "))
+  (setq url (browse-url-encode-url url))
+  (let* ((process-environment (browse-url-process-environment))
+	 (process
+	  (apply 'start-process
+		 (concat "firefox " url) nil
+		 browse-url-firefox-program
+		 (append
+		  browse-url-firefox-arguments
+                  (list url)))))))
+
 ;; (server-start)
 
 ;; don't make backups. i have version control for a reason.
