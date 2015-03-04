@@ -384,6 +384,23 @@
 (c-set-offset 'innamespace 0)
 (c-set-offset 'inline-open 0)
 
+(c-add-style "llvm.org"
+             '((fill-column . 80)
+	       (c++-indent-level . 2)
+	       (c-basic-offset . 2)
+	       (indent-tabs-mode . nil)
+               (c-offsets-alist . ((innamespace 0)))))
+
+(defun set-llvm-style ()
+  (if (string-match "llvm" buffer-file-name)
+      (progn
+        (c-set-style "llvm.org")
+        )))
+
+(add-hook 'c-mode-hook 'set-llvm-style)
+(add-hook 'c++-mode-hook 'set-llvm-style)
+
+
 (defun cplusplus-query (search-string)
   "Search for SEARCH-STRING on cplusplus.com"
   (interactive "sSearch for: ")
