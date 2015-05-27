@@ -199,6 +199,11 @@
 ;; Hacky, but solid for ArchLinux.
 (setq markdown-command "perl /usr/bin/vendor_perl/Markdown.pl")
 
+;;
+;; yaml mode
+;;
+
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;;
 ;; expand-region
