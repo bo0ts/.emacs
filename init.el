@@ -171,6 +171,7 @@
 
 (require 'magit)
 (global-set-key "\M-\C-g" 'magit-status)
+(setq magit-push-always-verify nil)
 
 (require 'gist)
 (setq gist-view-gist t)
